@@ -105,7 +105,6 @@ function AppShellProvider({ children }: { children: ReactNode }) {
 
   // write currently chosen theme to local storage
   useEffect(() => {
-    console.log('test use effect >>', state.theme)
     window.localStorage.setItem(storageKey, state.theme)
   }, [state.theme])
 
