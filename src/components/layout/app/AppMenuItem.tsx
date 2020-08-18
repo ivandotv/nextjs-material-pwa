@@ -22,6 +22,7 @@ export function AppMenuItem({
   useEffect(() => {
     setClientRender(true)
   }, [])
+
   const handleClick = () => {
     if (onClick) {
       onClick()

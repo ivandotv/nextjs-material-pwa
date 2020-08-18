@@ -7,11 +7,31 @@ import Typography from '@material-ui/core/Typography'
 import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
-import { AppMenuItem } from '../components/layout/app/AppMenuItem'
 import { defaultApplicationLayout } from '../components/layout/app/DefaultAppShellLayout'
+import MobileCard from '../components/layout/app/MobileCard'
+import { MobileMenuItem } from '../components/layout/app/MobileMenuItem'
 import { SettingsProfile } from '../components/layout/SettingsProfile'
 
-function SettingsMain() {
+export default function Settings() {
+  const router = useRouter()
+
+  return (
+    <>
+      <Paper>
+        <Box m={2} pt={2} pb={2}>
+          <Typography variant="h6">Settings</Typography>
+        </Box>
+      </Paper>
+      {router.query.section === 'profile' ? (
+        <SettingsProfile />
+      ) : (
+        <MainContent />
+      )}
+    </>
+  )
+}
+
+function MainContent() {
   return (
     <Paper>
       <Box p={2}>
@@ -33,32 +53,17 @@ function SettingsMain() {
     </Paper>
   )
 }
-export default function Settings() {
-  const router = useRouter()
 
-  return (
-    <>
-      <Paper>
-        <Box m={2} pt={2} pb={2}>
-          <Typography variant="h6">Settings</Typography>
-        </Box>
-      </Paper>
-      {router.query.section === 'profile' ? (
-        <SettingsProfile />
-      ) : (
-        <SettingsMain />
-      )}
-    </>
-  )
-}
-
-function SettingsMenu(defaultItems: ReactNode) {
+Settings.layout = defaultApplicationLayout
+Settings.desktopSidebar = function SettingsMenuDesktop(
+  defaultItems: ReactNode
+) {
   return (
     <>
       <List>{defaultItems}</List>
       <Divider />
       <List>
-        <AppMenuItem
+        <MobileMenuItem
           icon={
             <ListItemIcon>
               <AccountBoxIcon />
@@ -67,11 +72,31 @@ function SettingsMenu(defaultItems: ReactNode) {
           link={{ href: '/settings?section=profile', shallow: true }}
         >
           Profile
-        </AppMenuItem>
+        </MobileMenuItem>
       </List>
     </>
   )
 }
-Settings.layout = defaultApplicationLayout
-Settings.desktopSidebar = SettingsMenu
-Settings.mobileSidebar = SettingsMenu
+
+Settings.mobileSidebar = function SettingsMenuMobile(defaultItems: ReactNode) {
+  return (
+    <>
+      <List>{defaultItems}</List>
+      <Divider />
+      <List>
+        <MobileMenuItem
+          icon={
+            <ListItemIcon>
+              <AccountBoxIcon />
+            </ListItemIcon>
+          }
+          link={{ href: '/settings?section=profile', shallow: true }}
+        >
+          Profile
+        </MobileMenuItem>
+      </List>
+      <Divider />
+      <MobileCard />
+    </>
+  )
+}

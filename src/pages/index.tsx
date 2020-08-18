@@ -5,7 +5,7 @@ import { AppShellLayout } from '../components/layout/app/AppShellLayout'
 import { AppShellProvider } from '../components/layout/app/AppShellProvider'
 import { NextApplicationPage } from './_app'
 
-const Index: NextApplicationPage = function () {
+export default function Index() {
   return (
     <>
       <Paper>
@@ -42,14 +42,9 @@ Index.layout = function IndexLayout(
 ) {
   return (
     <AppShellProvider>
-      <AppShellLayout
-        desktopSidebar={Index.desktopSidebar}
-        mobileSidebar={Index.mobileSidebar}
-      >
+      <AppShellLayout>
         <Component {...props} />
       </AppShellLayout>
     </AppShellProvider>
   )
 }
-
-export default Index

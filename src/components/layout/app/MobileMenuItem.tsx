@@ -6,11 +6,13 @@ import { LinkProps } from 'next/link'
 export function MobileMenuItem({
   onClick,
   link,
-  children
+  children,
+  icon
 }: {
   link: LinkProps
   onClick?: (...args: any[]) => void
   children: ReactNode
+  icon?: ReactNode
 }) {
   const { dispatch } = useAppShell()
 
@@ -25,7 +27,7 @@ export function MobileMenuItem({
   }
 
   return (
-    <AppMenuItem link={link} onClick={handleClick}>
+    <AppMenuItem icon={icon} link={link} onClick={handleClick}>
       {children}
     </AppMenuItem>
   )

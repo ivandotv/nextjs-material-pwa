@@ -10,7 +10,7 @@ import Card from '@material-ui/core/Card'
 import CardMedia from '@material-ui/core/CardMedia'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import { useEffect } from 'react'
+import { useEffect, useCallback } from 'react'
 import { NextApplicationPage } from '../../../pages/_app'
 import { Actions, useAppShell } from './AppShellProvider'
 import { DefaultMenuItems } from './DefaultMenuItems'
@@ -82,9 +82,9 @@ export function MobileSidebar({
   const theme = useTheme()
   const classes = useStyles({ drawerWidth: state.mobileDrawerWidth })
 
-  const closeDrawer = () => {
+  const closeDrawer = useCallback(() => {
     dispatch({ type: Actions.MOBILE_DRAWER_IS_OPEN, payload: false })
-  }
+  }, [dispatch])
 
   const openDrawer = () => {
     dispatch({ type: Actions.MOBILE_DRAWER_IS_OPEN, payload: true })
@@ -102,7 +102,7 @@ export function MobileSidebar({
     if (matches && state.mobileDrawerIsOpen) {
       closeDrawer()
     }
-  }, [matches])
+  }, [matches, state.mobileDrawerIsOpen, closeDrawer])
 
   const defaultItems = (
     <DefaultMenuItems onClick={closeDrawer}></DefaultMenuItems>
