@@ -13,8 +13,8 @@ import { NextApplicationPage } from '../../../pages/_app'
 import { AppContent } from './AppContent'
 import { useAppShell } from './AppShellProvider'
 import { AppToolbar } from './AppToolbar'
-import { DesktopSidebar } from './DesktopSidebar'
-import { MobileSidebar } from './MobileSidebar'
+import { DesktopSidebar } from './sidebars/DesktopSidebar'
+import { MobileSidebar } from './sidebars/MobileSidebar'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

@@ -8,8 +8,8 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 import { defaultApplicationLayout } from '../components/layout/app/DefaultAppShellLayout'
-import MobileCard from '../components/layout/app/MobileCard'
-import { MobileMenuItem } from '../components/layout/app/MobileMenuItem'
+import MobileCard from '../components/layout/app/sidebars/MobileCard'
+import { MobileMenuItem } from '../components/layout/app/sidebars/MobileMenuItem'
 import { SettingsProfile } from '../components/layout/SettingsProfile'
 
 export default function Settings() {

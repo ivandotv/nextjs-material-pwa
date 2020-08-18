@@ -11,8 +11,8 @@ import CardMedia from '@material-ui/core/CardMedia'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import { useEffect, useCallback } from 'react'
-import { NextApplicationPage } from '../../../pages/_app'
-import { Actions, useAppShell } from './AppShellProvider'
+import { NextApplicationPage } from '../../../../pages/_app'
+import { Actions, useAppShell } from '../AppShellProvider'
 import { DefaultMenuItems } from './DefaultMenuItems'
 
 const useStyles = makeStyles((theme: Theme) =>
