@@ -47,6 +47,12 @@ const useStyles = makeStyles((theme: Theme) =>
       background:
         'linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(0,212,255,0) 100%)'
     },
+    appVersion: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      color: '#fff'
+    },
     avatarWrapper: {
       display: 'flex',
       position: 'relative',
@@ -138,6 +144,10 @@ export function MobileSidebar({
             title="Live from space album cover"
           />
           <div className={classes.cardMediaGradient}></div>
+
+          <Box className={classes.appVersion}>
+            <Typography component="p">App version: {__VERSION__}</Typography>
+          </Box>
           <Box className={classes.avatarWrapper}>
             <Avatar className={classes.avatar} src="profile.jpg"></Avatar>
             <Box className={classes.avatarInfoWrap}>
