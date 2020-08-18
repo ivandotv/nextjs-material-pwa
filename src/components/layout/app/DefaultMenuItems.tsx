@@ -8,7 +8,7 @@ export function DefaultMenuItems({
   return (
     <>
       <AppMenuItem link={{ href: '/' }} onClick={onClick}>
-        Index
+        Home
       </AppMenuItem>
       <AppMenuItem link={{ href: '/settings' }} onClick={onClick}>
         Settings

@@ -10,7 +10,7 @@ const Index: NextApplicationPage = function () {
     <>
       <Paper>
         <Box m={2} pt={2} pb={2}>
-          <Typography variant="h6">Index</Typography>
+          <Typography variant="h6">Home</Typography>
         </Box>
       </Paper>
       <Paper>

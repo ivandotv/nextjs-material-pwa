@@ -52,8 +52,6 @@ export default function Settings() {
   )
 }
 
-Settings.layout = defaultApplicationLayout
-
 function SettingsMenu(defaultItems: ReactNode) {
   return (
     <>
@@ -74,5 +72,6 @@ function SettingsMenu(defaultItems: ReactNode) {
     </>
   )
 }
+Settings.layout = defaultApplicationLayout
 Settings.desktopSidebar = SettingsMenu
 Settings.mobileSidebar = SettingsMenu
