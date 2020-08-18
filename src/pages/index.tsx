@@ -1,18 +1,15 @@
 import Box from '@material-ui/core/Box'
-import List from '@material-ui/core/List'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import { AppMenuItem } from '../components/layout/app/AppMenuItem'
 import { AppShellLayout } from '../components/layout/app/AppShellLayout'
 import { AppShellProvider } from '../components/layout/app/AppShellProvider'
-import { MobileMenuItem } from '../components/layout/app/MobileMenuItem'
 import { NextApplicationPage } from './_app'
 
 const Index: NextApplicationPage = function () {
   return (
     <>
       <Paper>
-        <Box m={2} p={2}>
+        <Box m={2} pt={2} pb={2}>
           <Typography variant="h6">Index</Typography>
         </Box>
       </Paper>
@@ -39,31 +36,10 @@ const Index: NextApplicationPage = function () {
   )
 }
 
-Index.desktopSidebar = function IndexDesktopSidebar(defaultItems) {
-  return (
-    <List>
-      {defaultItems}
-      <AppMenuItem href="/">Custom item -home</AppMenuItem>
-      <AppMenuItem href="/about">Custom item -about</AppMenuItem>
-    </List>
-  )
-}
-
-Index.mobileSidebar = function IndexMobileSidebar(defaultItems) {
-  return (
-    <List>
-      {defaultItems}
-      <MobileMenuItem href="/">Mobile index</MobileMenuItem>
-      <MobileMenuItem href="/about">Mobile About</MobileMenuItem>
-    </List>
-  )
-}
-
-// eslint-disable-next-line react/display-name
-Index.layout = (Component: NextApplicationPage, props: any) => {
-  // const sidebar = Component.getSidebar()
-
-  // const Component
+Index.layout = function IndexLayout(
+  Component: NextApplicationPage,
+  props: any
+) {
   return (
     <AppShellProvider>
       <AppShellLayout

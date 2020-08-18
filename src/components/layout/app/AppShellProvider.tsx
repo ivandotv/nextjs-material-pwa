@@ -26,7 +26,9 @@ const initialState = {
   mobileDrawerWidth: 300,
   desktopDrawerWidth: 270,
   desktopDrawerIsOpen: true,
-  isIOS: process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent),
+  isIOS:
+    typeof navigator !== 'undefined' &&
+    /iPad|iPhone|iPod/.test(navigator.userAgent),
   theme: 'light'
 }
 

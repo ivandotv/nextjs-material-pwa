@@ -1,4 +1,10 @@
-import { Box, Typography, useMediaQuery, useTheme } from '@material-ui/core'
+import {
+  Box,
+  Typography,
+  useMediaQuery,
+  useTheme,
+  List
+} from '@material-ui/core'
 import Avatar from '@material-ui/core/Avatar'
 import Card from '@material-ui/core/Card'
 import CardMedia from '@material-ui/core/CardMedia'
@@ -102,7 +108,11 @@ export function MobileSidebar({
     <DefaultMenuItems onClick={closeDrawer}></DefaultMenuItems>
   )
 
-  const menuItems = sidebar ? sidebar(defaultItems) : defaultItems
+  const menuItems = sidebar ? (
+    sidebar(defaultItems)
+  ) : (
+    <List>{defaultItems}</List>
+  )
 
   return (
     <Box className={classes.drawer}>

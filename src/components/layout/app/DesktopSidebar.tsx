@@ -5,6 +5,7 @@ import Box from '@material-ui/core/Box'
 import clsx from 'clsx'
 import { NextApplicationPage } from '../../../pages/_app'
 import { DefaultMenuItems } from './DefaultMenuItems'
+import List from '@material-ui/core/List'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -46,7 +47,11 @@ export function DesktopSidebar({
   const classes = useStyles({ drawerWidth: state.desktopDrawerWidth })
 
   const defaultItems = <DefaultMenuItems></DefaultMenuItems>
-  const menuItems = sidebar ? sidebar(defaultItems) : defaultItems
+  const menuItems = sidebar ? (
+    sidebar(defaultItems)
+  ) : (
+    <List>{defaultItems}</List>
+  )
 
   return (
     <Box
