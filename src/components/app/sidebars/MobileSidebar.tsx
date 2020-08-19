@@ -51,7 +51,8 @@ const useStyles = makeStyles((theme: Theme) =>
       position: 'absolute',
       top: 0,
       left: 0,
-      color: '#fff'
+      color: '#fff',
+      marginLeft: theme.spacing(1)
     },
     avatarWrapper: {
       display: 'flex',
