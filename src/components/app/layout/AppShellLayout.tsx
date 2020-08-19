@@ -1,3 +1,4 @@
+import Container from '@material-ui/core/Container'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Hidden from '@material-ui/core/Hidden'
 import {
@@ -10,11 +11,10 @@ import Head from 'next/head'
 import React, { ReactNode } from 'react'
 import { useDesktopDrawerPosition } from '../../../lib/utils'
 import { NextApplicationPage } from '../../../pages/_app'
-import { AppContent } from './AppContent'
 import { useAppShell } from '../AppShellProvider'
-import { AppToolbar } from './AppToolbar'
 import { DesktopSidebar } from '../sidebars/DesktopSidebar'
 import { MobileSidebar } from '../sidebars/MobileSidebar'
+import { AppToolbar } from './AppToolbar'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -26,6 +26,16 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     appBarSpacer: {
       ...theme.mixins.toolbar
+    },
+    contentSpacer: {
+      ...theme.mixins.toolbar,
+      marginBottom: theme.spacing(5)
+    },
+    content: {
+      width: '100%',
+      [theme.breakpoints.down('md')]: {
+        padding: 0
+      }
     }
   })
 )
@@ -70,7 +80,14 @@ export const AppShellLayout = ({
             <DesktopSidebar sidebar={desktopSidebar} />
           </Hidden>
         </nav>
-        <AppContent>{children}</AppContent>
+
+        <main className={classes.content}>
+          <div className={classes.contentSpacer} />
+          <Container maxWidth="md" disableGutters>
+            {/* https://github.com/mui-org/material-ui/issues/21711 */}
+            {children as JSX.Element}
+          </Container>
+        </main>
       </div>
     </>
   )
