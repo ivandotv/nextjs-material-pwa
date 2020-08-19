@@ -7,7 +7,7 @@ import React, {
   useReducer,
   ReactNode
 } from 'react'
-import { DarkTheme, LightTheme } from '../../../lib/theme'
+import { DarkTheme, LightTheme } from '../../lib/theme'
 
 const Actions = {
   SET_THEME: 'SET_THEME',

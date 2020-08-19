@@ -7,10 +7,10 @@ import Typography from '@material-ui/core/Typography'
 import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
-import { defaultApplicationLayout } from '../components/layout/app/DefaultAppShellLayout'
-import MobileCard from '../components/layout/app/sidebars/MobileCard'
-import { MobileMenuItem } from '../components/layout/app/sidebars/MobileMenuItem'
-import { SettingsProfile } from '../components/layout/SettingsProfile'
+import { defaultApplicationLayout } from '../components/app/layout/DefaultAppShellLayout'
+import MobileCard from '../components/app/sidebars/MobileCard'
+import { MobileMenuItem } from '../components/app/sidebars/MobileMenuItem'
+import { SettingsProfile } from '../components/app/SettingsProfile'
 
 export default function Settings() {
   const router = useRouter()

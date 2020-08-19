@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Actions, useAppShell } from '../components/layout/app/AppShellProvider'
+import { Actions, useAppShell } from '../components/app/AppShellProvider'
 
 export function useDesktopDrawerPosition(
   context: typeof useAppShell,

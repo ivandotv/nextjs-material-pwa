@@ -3,7 +3,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import { useAppShell } from '../AppShellProvider'
 import Box from '@material-ui/core/Box'
 import clsx from 'clsx'
-import { NextApplicationPage } from '../../../../pages/_app'
+import { NextApplicationPage } from '../../../pages/_app'
 import { DefaultMenuItems } from './DefaultMenuItems'
 import List from '@material-ui/core/List'
 

@@ -1,8 +1,8 @@
 import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import { AppShellLayout } from '../components/layout/app/AppShellLayout'
-import { AppShellProvider } from '../components/layout/app/AppShellProvider'
+import { AppShellLayout } from '../components/app/layout/AppShellLayout'
+import { AppShellProvider } from '../components/app/AppShellProvider'
 import { NextApplicationPage } from './_app'
 
 export default function Index() {

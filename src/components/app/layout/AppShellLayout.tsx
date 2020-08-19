@@ -11,10 +11,10 @@ import React, { ReactNode } from 'react'
 import { useDesktopDrawerPosition } from '../../../lib/utils'
 import { NextApplicationPage } from '../../../pages/_app'
 import { AppContent } from './AppContent'
-import { useAppShell } from './AppShellProvider'
+import { useAppShell } from '../AppShellProvider'
 import { AppToolbar } from './AppToolbar'
-import { DesktopSidebar } from './sidebars/DesktopSidebar'
-import { MobileSidebar } from './sidebars/MobileSidebar'
+import { DesktopSidebar } from '../sidebars/DesktopSidebar'
+import { MobileSidebar } from '../sidebars/MobileSidebar'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
