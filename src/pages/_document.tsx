@@ -1,24 +1,18 @@
 import { ServerStyleSheets } from '@material-ui/core/styles'
 import Document, {
   DocumentContext,
-  Head,
   Html,
   Main,
-  NextScript
+  NextScript,
+  Head
 } from 'next/document'
 import React from 'react'
-// import { LightTheme } from '../lib/theme'
 
 export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head>
-          <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          />
-        </Head>
+        <Head />
         <body>
           <Main />
           <NextScript />

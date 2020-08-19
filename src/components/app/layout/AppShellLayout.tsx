@@ -58,7 +58,11 @@ export const AppShellLayout = ({
   return (
     <>
       <Head>
-        <title>App Name</title>
+        <title>Next.js PWA</title>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
         <meta
           name="theme-color"
           key="theme-color"

@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
-import { AppProps } from 'next/app'
 import Head from 'next/head'
+import { AppProps } from 'next/app'
 import React from 'react'
 
 export type NextApplicationPage<P = {}, IP = P> = NextPage<P, IP> & {
@@ -22,10 +22,10 @@ export default function MyApp(props: AppProps) {
   return (
     <>
       <Head>
-        <title>App Name</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
+          key="viewport"
         />
       </Head>
       {Component.layout ? (
