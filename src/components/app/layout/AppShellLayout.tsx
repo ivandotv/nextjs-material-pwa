@@ -61,7 +61,9 @@ export const AppShellLayout = ({
         <title>Next.js PWA</title>
         <link
           rel="stylesheet"
+          as="font"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          crossOrigin="anonymous"
         />
         <meta
           name="theme-color"

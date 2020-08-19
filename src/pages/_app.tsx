@@ -22,10 +22,30 @@ export default function MyApp(props: AppProps) {
   return (
     <>
       <Head>
+        <link rel="manifest" href="/manifest.webmanifest" />
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
           key="viewport"
+        />
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="description"
+          content="Next.js PWA application made with metrial-ui"
+          key="description"
+        />
+        <meta
+          name="keywords"
+          content="pwa,nextjs,material,design"
+          key="keywords"
+        />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link
+          href="/favicon-32x32.png"
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
         />
       </Head>
       {Component.layout ? (
