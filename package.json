@@ -19,6 +19,7 @@
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "clsx": "^1.1.1",
+    "csso": "^4.0.3",
     "next": "9.5.2",
     "next-pwa": "^3.1.1",
     "react": "16.13.1",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^9.5.0",
+    "@types/csso": "^3.5.1",
     "@types/node": "^14.0.26",
     "@types/react": "^16.9.43",
     "@typescript-eslint/eslint-plugin": "^3.7.1",

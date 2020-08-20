@@ -7,6 +7,7 @@ import Document, {
   Head
 } from 'next/document'
 import React from 'react'
+import csso from 'csso'
 
 export default class MyDocument extends Document {
   render() {
@@ -58,12 +59,17 @@ MyDocument.getInitialProps = async (ctx: DocumentContext) => {
 
   const initialProps = await Document.getInitialProps(ctx)
 
+  const styleElement = sheets.getStyleElement()
+  /* server rendered material ui is NOT minified
+    use csso to minify generated css
+  */
+  styleElement.props.dangerouslySetInnerHTML.__html = csso.minify(
+    styleElement.props.dangerouslySetInnerHTML.__html
+  ).css
+
   return {
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
-    styles: [
-      ...React.Children.toArray(initialProps.styles),
-      sheets.getStyleElement()
-    ]
+    styles: [...React.Children.toArray(initialProps.styles), styleElement]
   }
 }
