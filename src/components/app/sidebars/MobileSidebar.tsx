@@ -1,16 +1,16 @@
 import {
   Box,
+  List,
   Typography,
   useMediaQuery,
-  useTheme,
-  List
+  useTheme
 } from '@material-ui/core'
 import Avatar from '@material-ui/core/Avatar'
 import Card from '@material-ui/core/Card'
 import CardMedia from '@material-ui/core/CardMedia'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import { useEffect, useCallback } from 'react'
+import { memo, useCallback, useEffect } from 'react'
 import { NextApplicationPage } from '../../../pages/_app'
 import { Actions, useAppShell } from '../AppShellProvider'
 import { DefaultMenuItems } from './DefaultMenuItems'
@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export function MobileSidebar({
+export const MobileSidebar = memo(function MobileSidebar({
   sidebar
 }: {
   sidebar?: NextApplicationPage['mobileSidebar']
@@ -169,4 +169,4 @@ export function MobileSidebar({
       </SwipeableDrawer>
     </Box>
   )
-}
+})

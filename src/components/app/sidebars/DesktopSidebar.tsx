@@ -6,6 +6,7 @@ import clsx from 'clsx'
 import { NextApplicationPage } from '../../../pages/_app'
 import { DefaultMenuItems } from './DefaultMenuItems'
 import List from '@material-ui/core/List'
+import { memo } from 'react'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export function DesktopSidebar({
+export const DesktopSidebar = memo(function DesktopSidebar({
   sidebar
 }: {
   sidebar?: NextApplicationPage['desktopSidebar']
@@ -74,4 +75,4 @@ export function DesktopSidebar({
       </Drawer>
     </Box>
   )
-}
+})
