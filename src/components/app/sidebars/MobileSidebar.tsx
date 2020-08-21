@@ -128,6 +128,7 @@ export const MobileSidebar = memo(function MobileSidebar({
         disableDiscovery={state.isIOS}
         variant="temporary"
         anchor="left"
+        transitionDuration={400}
         open={state.mobileDrawerIsOpen}
         onClose={closeDrawer}
         onOpen={openDrawer}
