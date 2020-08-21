@@ -1,9 +1,7 @@
 import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import { AppShellLayout } from '../components/app/layout/AppShellLayout'
-import { AppShellProvider } from '../components/app/AppShellProvider'
-import { NextApplicationPage } from './_app'
+import { AppDefaultLayout } from '../components/app/layout/AppDefaultLayout'
 
 export default function Index() {
   return (
@@ -36,15 +34,17 @@ export default function Index() {
   )
 }
 
-Index.layout = function IndexLayout(
-  Component: NextApplicationPage,
-  props: any
-) {
-  return (
-    <AppShellProvider>
-      <AppShellLayout>
-        <Component {...props} />
-      </AppShellLayout>
-    </AppShellProvider>
-  )
-}
+// Index.layout = function IndexLayout(
+//   Component: NextApplicationPage,
+//   props: any
+// ) {
+//   return (
+//     <AppShellProvider>
+//       <AppShellLayout>
+//         <Component {...props} />
+//       </AppShellLayout>
+//     </AppShellProvider>
+//   )
+// }
+
+Index.layout = AppDefaultLayout
