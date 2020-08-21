@@ -2,10 +2,12 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import React, {
   createContext,
+  ReactNode,
   useContext,
   useEffect,
+  useLayoutEffect,
   useReducer,
-  ReactNode
+  useState
 } from 'react'
 import { DarkTheme, LightTheme } from '../../lib/theme'
 
@@ -83,33 +85,6 @@ const { Provider, Consumer } = AppShellContext
 function AppShellProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
-
-  const storageKey = 'theme'
-
-  // monitor for system / browser changes to the theme
-  useEffect(() => {
-    const theme = window.localStorage.getItem(storageKey)
-    if (typeof theme === 'string') {
-      // we have explicitly set theme
-      dispatch({
-        type: 'SET_THEME',
-        payload: theme === 'dark' ? 'dark' : 'light'
-      })
-    } else {
-      // system or browser set theme
-      dispatch({
-        type: 'SET_THEME',
-        payload: prefersDarkMode ? 'dark' : 'light'
-      })
-    }
-  }, [prefersDarkMode])
-
-  // write currently chosen theme to local storage
-  useEffect(() => {
-    window.localStorage.setItem(storageKey, state.theme)
-  }, [state.theme])
-
   const currentTheme = state.theme === 'dark' ? DarkTheme : LightTheme
 
   // remove serverside stylesheets
@@ -121,9 +96,18 @@ function AppShellProvider({ children }: { children: ReactNode }) {
     }
   }, [])
 
+  // https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
+  const [showThemeComponent, setShowThemeComponent] = useState(false)
+  useEffect(() => {
+    setShowThemeComponent(true)
+  }, [])
+
   return (
     <ThemeProvider theme={currentTheme}>
-      <Provider value={{ state, dispatch }}>{children}</Provider>
+      <Provider value={{ state, dispatch }}>
+        {showThemeComponent ? <ThemeComponent /> : null}
+        {children}
+      </Provider>
     </ThemeProvider>
   )
 }
@@ -139,4 +123,40 @@ type ActionMap<Payload> = {
         type: Action
         payload: Payload[Action]
       }
+}
+
+// https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
+function ThemeComponent() {
+  const { state, dispatch } = useAppShell()
+  console.log('theme component')
+
+  const storageKey = 'theme'
+  // write currently chosen theme to local storage
+  useEffect(() => {
+    window.localStorage.setItem(storageKey, state.theme)
+  }, [state.theme])
+
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
+
+  // monitor for system / browser changes to the theme
+  useLayoutEffect(() => {
+    console.log('use layout effect run')
+    const theme = window.localStorage.getItem(storageKey)
+    console.log('theme ', theme)
+    if (typeof theme === 'string') {
+      // we have explicitly set theme
+      dispatch({
+        type: 'SET_THEME',
+        payload: theme === 'dark' ? 'dark' : 'light'
+      })
+    } else {
+      // system or browser set theme
+      dispatch({
+        type: 'SET_THEME',
+        payload: prefersDarkMode ? 'dark' : 'light'
+      })
+    }
+  }, [prefersDarkMode, dispatch])
+
+  return null
 }
