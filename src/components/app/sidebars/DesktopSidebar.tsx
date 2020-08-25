@@ -1,12 +1,17 @@
-import Drawer from '@material-ui/core/Drawer'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import { useAppShell } from '../AppShellProvider'
 import Box from '@material-ui/core/Box'
-import clsx from 'clsx'
-import { NextApplicationPage } from '../../../pages/_app'
-import { DefaultMenuItems } from './DefaultMenuItems'
+import Drawer from '@material-ui/core/Drawer'
 import List from '@material-ui/core/List'
+import {
+  createStyles,
+  makeStyles,
+  Theme,
+  useTheme
+} from '@material-ui/core/styles'
+import clsx from 'clsx'
 import { memo } from 'react'
+import { NextApplicationPage } from '../../../pages/_app'
+import { useAppShell } from '../AppShellProvider'
+import { DefaultMenuItems } from './DefaultMenuItems'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -27,10 +32,17 @@ const useStyles = makeStyles((theme: Theme) =>
         return drawerWidth * -1
       }
     },
+    boxAnim: {
+      transition: theme.transitions.create('margin', {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen
+      })
+    },
     boxShift: {
       height: '100vh',
-      marginLeft: 0,
-
+      marginLeft: 0
+    },
+    boxShiftAnim: {
       transition: theme.transitions.create('margin', {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen
@@ -46,6 +58,7 @@ export const DesktopSidebar = memo(function DesktopSidebar({
 }) {
   const { state } = useAppShell()
   const classes = useStyles({ drawerWidth: state.desktopDrawerWidth })
+  const theme = useTheme()
 
   const defaultItems = <DefaultMenuItems></DefaultMenuItems>
   const menuItems = sidebar ? (
@@ -58,14 +71,26 @@ export const DesktopSidebar = memo(function DesktopSidebar({
     <Box
       className={clsx(classes.drawer, {
         [classes.box]: !state.desktopDrawerIsOpen,
-        [classes.boxShift]: state.desktopDrawerIsOpen
+        [classes.boxAnim]: !state.desktopDrawerIsOpen && state.showApp,
+        [classes.boxShift]: state.desktopDrawerIsOpen,
+        [classes.boxShiftAnim]: state.desktopDrawerIsOpen && state.showApp
       })}
     >
       <Drawer
         anchor="left"
         variant="persistent"
         open={state.desktopDrawerIsOpen}
-        transitionDuration={0}
+        /* eslint-disable */
+        transitionDuration={
+          state.showApp
+            ? {
+                appear: 0,
+                enter: theme.transitions.duration.enteringScreen,
+                exit: theme.transitions.duration.leavingScreen
+              }
+            : 0
+        }
+        /* eslint-enable */
         classes={{
           paper: classes.drawerPaper
         }}

@@ -59,18 +59,20 @@ export const AppShellLayout = ({
     <>
       <Head>
         <title>Next.js PWA</title>
-        <meta
-          name="theme-color"
-          key="theme-color"
-          content={
-            theme.palette.type === 'dark'
-              ? theme.palette.grey[900]
-              : theme.palette.primary.main
-          }
-        />
+        {state.showApp ? (
+          <meta
+            name="theme-color"
+            key="theme-color"
+            content={
+              theme.palette.type === 'dark'
+                ? theme.palette.grey[900]
+                : theme.palette.primary.main
+            }
+          />
+        ) : null}
       </Head>
       <CssBaseline />
-      <div className={classes.root}>
+      <div style={{ opacity: state.showApp ? 1 : 0 }} className={classes.root}>
         <AppToolbar />
         <nav className={classes.navWrapper}>
           <Hidden mdUp implementation="js">

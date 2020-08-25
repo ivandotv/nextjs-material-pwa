@@ -1,13 +1,9 @@
-import { useAppShell } from '../AppShellProvider'
+import { useAppShell, Actions } from '../AppShellProvider'
 import { useRef, useEffect, useLayoutEffect } from 'react'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 // https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
-export function ThemeQueryComponent({
-  setShowApp
-}: {
-  setShowApp: (show: boolean) => void
-}) {
+export function ThemeQueryComponent() {
   const { state, dispatch } = useAppShell()
 
   const storageKey = 'theme'
@@ -33,18 +29,19 @@ export function ThemeQueryComponent({
     if (typeof theme === 'string') {
       // we have explicitly set theme
       dispatch({
-        type: 'SET_THEME',
+        type: Actions.SET_THEME,
         payload: theme === 'dark' ? 'dark' : 'light'
       })
     } else {
       // system or browser set theme
       dispatch({
-        type: 'SET_THEME',
+        type: Actions.SET_THEME,
         payload: prefersDarkMode ? 'dark' : 'light'
       })
     }
-    setShowApp(true)
-  }, [prefersDarkMode, dispatch, setShowApp])
+    // setShowApp(true)
+    dispatch({ type: Actions.READY_TO_SHOW, payload: true })
+  }, [prefersDarkMode, dispatch])
 
   return null
 }

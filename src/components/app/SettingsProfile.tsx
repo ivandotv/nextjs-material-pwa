@@ -1,9 +1,8 @@
-import { useState } from 'react'
+import { Box, Button, CardContent, TextField } from '@material-ui/core'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import Divider from '@material-ui/core/Divider'
 import Grid from '@material-ui/core/Grid'
-import { TextField, CardContent, Button, Box } from '@material-ui/core'
 
 const states = [
   {
@@ -16,18 +15,7 @@ const states = [
   }
 ]
 
-// component taken from:
-// https://github.com/devias-io/react-material-dashboard
 export function SettingsProfile() {
-  const [values, _setValues] = useState({
-    firstName: 'Sam',
-    lastName: 'Fisher',
-    email: 'sam@fisher-special-delivery.io',
-    phone: '',
-    state: 'New York',
-    country: 'USA'
-  })
-
   return (
     <form autoComplete="off">
       <Card>
@@ -42,7 +30,6 @@ export function SettingsProfile() {
                 label="First name"
                 name="firstName"
                 required
-                value={values.firstName}
                 variant="outlined"
               />
             </Grid>
@@ -52,7 +39,6 @@ export function SettingsProfile() {
                 label="Last name"
                 name="lastName"
                 required
-                value={values.lastName}
                 variant="outlined"
               />
             </Grid>
@@ -62,7 +48,6 @@ export function SettingsProfile() {
                 label="Email Address"
                 name="email"
                 required
-                value={values.email}
                 variant="outlined"
               />
             </Grid>
@@ -72,7 +57,6 @@ export function SettingsProfile() {
                 label="Phone Number"
                 name="phone"
                 type="number"
-                value={values.phone}
                 variant="outlined"
               />
             </Grid>
@@ -93,7 +77,6 @@ export function SettingsProfile() {
                 required
                 select
                 SelectProps={{ native: true }}
-                value={values.state}
                 variant="outlined"
               >
                 {states.map((option) => (
