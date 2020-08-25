@@ -3,7 +3,11 @@ import { useRef, useEffect, useLayoutEffect } from 'react'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 // https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
-export function ThemeQueryComponent() {
+export function ThemeQueryComponent({
+  setShowApp
+}: {
+  setShowApp: (show: boolean) => void
+}) {
   const { state, dispatch } = useAppShell()
 
   const storageKey = 'theme'
@@ -22,7 +26,7 @@ export function ThemeQueryComponent() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
 
   // monitor for system / browser changes to the theme
-  // todo - split in to effects
+  // todo - split in to two effects
   useLayoutEffect(() => {
     const theme = window.localStorage.getItem(storageKey)
 
@@ -39,7 +43,8 @@ export function ThemeQueryComponent() {
         payload: prefersDarkMode ? 'dark' : 'light'
       })
     }
-  }, [prefersDarkMode, dispatch])
+    setShowApp(true)
+  }, [prefersDarkMode, dispatch, setShowApp])
 
   return null
 }

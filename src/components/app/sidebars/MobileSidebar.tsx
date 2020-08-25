@@ -142,7 +142,7 @@ export const MobileSidebar = memo(function MobileSidebar({
         <Card className={classes.card}>
           <CardMedia
             className={classes.cardMedia}
-            image="/mobile-drawer-hero.png"
+            image="app/mobile-drawer-hero.png"
             title="Live from space album cover"
           />
           <div className={classes.cardMediaGradient}></div>
@@ -151,7 +151,7 @@ export const MobileSidebar = memo(function MobileSidebar({
             <Typography component="p">App version: {__VERSION__}</Typography>
           </Box>
           <Box className={classes.avatarWrapper}>
-            <Avatar className={classes.avatar} src="profile.jpg"></Avatar>
+            <Avatar className={classes.avatar} src="app/profile.jpg"></Avatar>
             <Box className={classes.avatarInfoWrap}>
               <Typography
                 className={classes.avatarName}

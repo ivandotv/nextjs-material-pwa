@@ -4,6 +4,7 @@
 /public/precache.*.js
 /public/workbox*.js
 /public/sw.js
+/public/sw.js.map
 
 # dependencies
 /node_modules

@@ -1,50 +1,57 @@
-import Box from '@material-ui/core/Box'
-import Paper from '@material-ui/core/Paper'
-import Typography from '@material-ui/core/Typography'
-import { AppDefaultLayout } from '../components/app/layout/AppDefaultLayout'
+import Link from 'next/link'
+// @ts-ignore
+import Banner from '../svg/landing-page.svg'
+import Head from 'next/head'
 
 export default function Index() {
   return (
     <>
-      <Paper>
-        <Box m={2} pt={2} pb={2}>
-          <Typography variant="h6">Home</Typography>
-        </Box>
-      </Paper>
-      <Paper>
-        <Box p={2}>
-          <Typography paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-            dolor purus non enim praesent elementum facilisis leo vel. Risus at
-            ultrices mi tempus imperdiet. Semper risus in hendrerit gravida
-            rutrum quisque non tellus. Convallis convallis tellus id interdum
-            velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean
-            sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-            integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-            eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-            quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-            vivamus at augue. At augue eget arcu dictum varius duis at
-            consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-            donec massa sapien faucibus et molestie ac.
-          </Typography>
-        </Box>
-      </Paper>
+      <Head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap"
+          rel="stylesheet"
+        ></link>
+      </Head>
+      <div className="page-wrap">
+        <h1>NEXT.JS PWA</h1>
+        <div className="banner-wrapper">
+          <Banner />
+        </div>
+        <Link href="/app">
+          <a className="launch-app">Launch Application</a>
+        </Link>
+        <style jsx>
+          {`
+            .page-wrap {
+              display: flex;
+              flex-flow: column;
+              align-items: center;
+            }
+            h1 {
+              font-size: 2rem;
+              margin-bottom: 0;
+            }
+            .banner-wrapper {
+              width: 100%;
+              max-width: 500px;
+            }
+            .launch-app {
+              background-color: blue;
+              border-radius: 10px;
+              color: #fff;
+              padding: 20px;
+              text-decoration: none;
+            }
+          `}
+        </style>
+        <style jsx global>
+          {`
+            body {
+              font-family: 'Open Sans', sans-serif;
+            }
+          `}
+        </style>
+      </div>
     </>
   )
 }
-
-// Index.layout = function IndexLayout(
-//   Component: NextApplicationPage,
-//   props: any
-// ) {
-//   return (
-//     <AppShellProvider>
-//       <AppShellLayout>
-//         <Component {...props} />
-//       </AppShellLayout>
-//     </AppShellProvider>
-//   )
-// }
-
-Index.layout = AppDefaultLayout

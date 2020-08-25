@@ -3,8 +3,9 @@ const pkg = require('./package.json')
 const pkgVersion = process.env.PKG_VERSION || pkg.version
 
 module.exports = {
-  presets: [['next/babel']],
+  presets: ['next/babel'],
   plugins: [
+    ['inline-react-svg'],
     [
       'transform-define',
       {

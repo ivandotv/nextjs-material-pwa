@@ -7,10 +7,10 @@ export function DefaultMenuItems({
 }) {
   return (
     <>
-      <AppMenuItem link={{ href: '/' }} onClick={onClick}>
+      <AppMenuItem link={{ href: '/app' }} onClick={onClick}>
         Home
       </AppMenuItem>
-      <AppMenuItem link={{ href: '/settings' }} onClick={onClick}>
+      <AppMenuItem link={{ href: '/app/settings' }} onClick={onClick}>
         Settings
       </AppMenuItem>
     </>

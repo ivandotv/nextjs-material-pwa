@@ -7,10 +7,9 @@ import Typography from '@material-ui/core/Typography'
 import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
-import { SettingsProfile } from '../components/app/SettingsProfile'
-import MobileCard from '../components/app/sidebars/MobileCard'
-import { MobileMenuItem } from '../components/app/sidebars/MobileMenuItem'
-import { AppDefaultLayout } from '../components/app/layout/AppDefaultLayout'
+import { AppDefaultLayout } from '../../components/app/layout/AppDefaultLayout'
+import { SettingsProfile } from '../../components/app/SettingsProfile'
+import { MobileMenuItem } from '../../components/app/sidebars/MobileMenuItem'
 
 export default function Settings() {
   const router = useRouter()
@@ -69,7 +68,7 @@ Settings.desktopSidebar = function SettingsMenuDesktop(
               <AccountBoxIcon />
             </ListItemIcon>
           }
-          link={{ href: '/settings?section=profile', shallow: true }}
+          link={{ href: '/app/settings?section=profile', shallow: true }}
         >
           Profile
         </MobileMenuItem>
@@ -90,13 +89,11 @@ Settings.mobileSidebar = function SettingsMenuMobile(defaultItems: ReactNode) {
               <AccountBoxIcon />
             </ListItemIcon>
           }
-          link={{ href: '/settings?section=profile', shallow: true }}
+          link={{ href: '/app/settings?section=profile', shallow: true }}
         >
           Profile
         </MobileMenuItem>
       </List>
-      <Divider />
-      <MobileCard />
     </>
   )
 }

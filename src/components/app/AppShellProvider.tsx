@@ -4,11 +4,9 @@ import React, {
   ReactNode,
   useContext,
   useEffect,
-  useReducer,
-  useState
+  useReducer
 } from 'react'
 import { DarkTheme, LightTheme } from '../../lib/theme'
-import { ThemeQueryComponent } from './layout/ThemeQueryComponent'
 
 const Actions = {
   SET_THEME: 'SET_THEME',
@@ -81,13 +79,7 @@ function useAppShell() {
 
 const { Provider, Consumer } = AppShellContext
 
-function AppShellProvider({
-  children,
-  show
-}: {
-  children: ReactNode
-  show: boolean
-}) {
+function AppShellProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   const currentTheme = state.theme === 'dark' ? DarkTheme : LightTheme
@@ -101,20 +93,9 @@ function AppShellProvider({
     }
   }, [])
 
-  // https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
-  const [showThemeComponent, setShowThemeComponent] = useState(false)
-  useEffect(() => {
-    setShowThemeComponent(true)
-  }, [])
-
   return (
     <ThemeProvider theme={currentTheme}>
-      <Provider value={{ state, dispatch }}>
-        <div id="opacity-wrapper" style={{ opacity: show ? 1 : 0 }}>
-          {showThemeComponent ? <ThemeQueryComponent /> : null}
-          {children}
-        </div>
-      </Provider>
+      <Provider value={{ state, dispatch }}>{children}</Provider>
     </ThemeProvider>
   )
 }
