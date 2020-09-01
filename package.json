@@ -20,7 +20,7 @@
     "@material-ui/icons": "^4.9.1",
     "clsx": "^1.1.1",
     "csso": "^4.0.3",
-    "next": "9.5.2",
+    "next": "9.5.3",
     "next-pwa": "^3.1.1",
     "react": "16.13.1",
     "react-dom": "16.13.1"
