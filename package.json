@@ -22,8 +22,8 @@
     "csso": "^4.0.3",
     "next": "9.5.5",
     "next-pwa": "^3.1.1",
-    "react": "16.14.0",
-    "react-dom": "16.14.0"
+    "react": "17.0.0",
+    "react-dom": "17.0.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^9.5.2",
