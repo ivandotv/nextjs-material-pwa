@@ -9,8 +9,13 @@ module.exports = {
     __DEV__: true,
     __VERSION__: true
   },
-  plugins: ['@typescript-eslint/eslint-plugin'],
-  extends: ['plugin:react/recommended', 'plugin:react-hooks/recommended'],
+  plugins: ['@typescript-eslint/eslint-plugin', 'prettier'],
+  extends: [
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'prettier',
+    'prettier/@typescript-eslint'
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     // project: './tsconfig.eslint.json',
@@ -35,6 +40,12 @@ module.exports = {
     'padding-line-between-statements': [
       'error',
       { blankLine: 'always', prev: '*', next: 'return' }
+    ],
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: ['@material-ui/*/*/*', '!@material-ui/core/test-utils/*']
+      }
     ],
     // '@typescript-eslint/explicit-function-return-type': [
     //   'error',
