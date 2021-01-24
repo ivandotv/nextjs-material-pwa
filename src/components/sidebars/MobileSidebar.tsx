@@ -149,6 +149,16 @@ export const MobileSidebar = memo(function MobileSidebar({
 
           <Box className={classes.appVersion}>
             <Typography component="p">App version: {__VERSION__}</Typography>
+            {__DEV__ ? (
+              <>
+                <Typography component="p">
+                  Commit sha: {__COMMIT_SHA__}
+                </Typography>
+                <Typography component="p">
+                  Build date: {__BUILD_DATE__}
+                </Typography>
+              </>
+            ) : null}
           </Box>
           <Box className={classes.avatarWrapper}>
             <Avatar className={classes.avatar} src="/app/profile.jpg"></Avatar>

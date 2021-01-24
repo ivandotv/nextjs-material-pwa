@@ -34,6 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
     "babel-plugin-transform-define": "^2.0.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-import": "^2.22.1",
