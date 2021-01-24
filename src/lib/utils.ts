@@ -14,12 +14,12 @@ export function useDesktopDrawerPosition(
       type: Actions.DESKTOP_DRAWER_IS_OPEN,
       payload: isOpen ? isOpen === 'open' : true
     })
-  }, [])
+  }, [key, dispatch])
 
   useEffect(() => {
     window.localStorage.setItem(
       key,
       state.desktopDrawerIsOpen ? 'open' : 'closed'
     )
-  }, [state.desktopDrawerIsOpen])
+  }, [state.desktopDrawerIsOpen, key])
 }
