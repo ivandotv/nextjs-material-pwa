@@ -1,7 +1,7 @@
 import Box from '@material-ui/core/Box'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import { AppDefaultLayout } from '../../components/app/layout/AppDefaultLayout'
+import { AppDefaultLayout } from '../../components/layout/AppDefaultLayout'
 
 export default function AppIndex() {
   return (

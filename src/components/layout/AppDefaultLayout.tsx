@@ -1,6 +1,6 @@
-import { NextApplicationPage } from '../../../pages/_app'
-import { AppShellProvider } from '../AppShellProvider'
-import { AppShellLayout } from './AppShellLayout'
+import { NextApplicationPage } from 'pages/_app'
+import { AppShellProvider } from 'components/providers/AppShellProvider'
+import { AppShellLayout } from 'components/layout/AppShellLayout'
 
 export function AppDefaultLayout(Component: NextApplicationPage, props: any) {
   return (

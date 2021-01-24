@@ -7,8 +7,8 @@ import React, {
   useReducer,
   useState
 } from 'react'
-import { DarkTheme, LightTheme } from '../../lib/theme'
-import { ThemeQueryComponent } from './layout/ThemeQueryComponent'
+import { DarkTheme, LightTheme } from 'lib/theme'
+import { ThemeQueryComponent } from 'components/layout/ThemeQueryComponent'
 
 const Actions = {
   SET_THEME: 'SET_THEME',

@@ -1,4 +1,4 @@
-import { useAppShell, Actions } from '../AppShellProvider'
+import { useAppShell, Actions } from '../providers/AppShellProvider'
 import { useRef, useEffect, useLayoutEffect } from 'react'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 

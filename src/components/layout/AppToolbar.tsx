@@ -13,7 +13,7 @@ import MenuCloseIcon from '@material-ui/icons/ArrowBack'
 import DarkIcon from '@material-ui/icons/Brightness6'
 import LightIcon from '@material-ui/icons/Brightness7'
 import MenuIcon from '@material-ui/icons/Menu'
-import { Actions, useAppShell } from '../AppShellProvider'
+import { Actions, useAppShell } from '../providers/AppShellProvider'
 import { useState } from 'react'
 import Badge from '@material-ui/core/Badge'
 

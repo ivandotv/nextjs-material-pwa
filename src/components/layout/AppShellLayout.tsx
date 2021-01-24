@@ -9,12 +9,12 @@ import {
 } from '@material-ui/core/styles'
 import Head from 'next/head'
 import React, { ReactNode } from 'react'
-import { useDesktopDrawerPosition } from '../../../lib/utils'
-import { NextApplicationPage } from '../../../pages/_app'
-import { useAppShell } from '../AppShellProvider'
-import { DesktopSidebar } from '../sidebars/DesktopSidebar'
-import { MobileSidebar } from '../sidebars/MobileSidebar'
-import { AppToolbar } from './AppToolbar'
+import { useDesktopDrawerPosition } from 'lib/utils'
+import { NextApplicationPage } from 'pages/_app'
+import { useAppShell } from 'components/providers/AppShellProvider'
+import { DesktopSidebar } from 'components/sidebars/DesktopSidebar'
+import { MobileSidebar } from 'components/sidebars/MobileSidebar'
+import { AppToolbar } from 'components/layout/AppToolbar'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,8 +28,8 @@ const useStyles = makeStyles((theme: Theme) =>
       ...theme.mixins.toolbar
     },
     contentSpacer: {
-      ...theme.mixins.toolbar,
-      marginBottom: theme.spacing(5)
+      ...theme.mixins.toolbar
+      // marginBottom: theme.spacing(5)
     },
     content: {
       width: '100%',

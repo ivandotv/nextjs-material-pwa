@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
-import { AppMenuItem } from './AppMenuItem'
-import { Actions, useAppShell } from '../AppShellProvider'
+import { AppMenuItem } from 'components/sidebars/AppMenuItem'
+import { Actions, useAppShell } from 'components/providers/AppShellProvider'
 import { LinkProps } from 'next/link'
 
 export function MobileMenuItem({

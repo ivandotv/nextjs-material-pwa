@@ -1,6 +1,4 @@
 import Link from 'next/link'
-// @ts-ignore
-import Banner from '../svg/landing-page.svg'
 import Head from 'next/head'
 
 export default function Index() {
@@ -15,7 +13,7 @@ export default function Index() {
       <div className="page-wrap">
         <h1>NEXT.JS PWA</h1>
         <div className="banner-wrapper">
-          <Banner />
+          <img src="landing-page.svg" />
         </div>
         <Link href="/app">
           <a className="launch-app">Launch Application</a>

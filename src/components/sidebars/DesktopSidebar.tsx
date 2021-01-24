@@ -9,9 +9,9 @@ import {
 } from '@material-ui/core/styles'
 import clsx from 'clsx'
 import { memo } from 'react'
-import { NextApplicationPage } from '../../../pages/_app'
-import { useAppShell } from '../AppShellProvider'
-import { DefaultMenuItems } from './DefaultMenuItems'
+import { NextApplicationPage } from 'pages/_app'
+import { useAppShell } from 'components/providers/AppShellProvider'
+import { DefaultMenuItems } from 'components/sidebars/DefaultMenuItems'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
