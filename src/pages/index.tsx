@@ -11,7 +11,7 @@ export default function Index() {
         ></link>
       </Head>
       <div className="page-wrap">
-        <h1>NEXT.JS PWA</h1>
+        <h1>Next.js Material PWA</h1>
         <div className="banner-wrapper">
           <img src="landing-page.svg" />
         </div>
@@ -26,12 +26,17 @@ export default function Index() {
               align-items: center;
             }
             h1 {
-              font-size: 2rem;
+              font-size: 2.5rem;
               margin-bottom: 0;
+              text-align: center;
             }
             .banner-wrapper {
               width: 100%;
               max-width: 500px;
+            }
+            .banner-wrapper img {
+              width: 100%;
+              height: auto;
             }
             .launch-app {
               background-color: blue;
