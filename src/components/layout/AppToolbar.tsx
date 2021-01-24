@@ -1,4 +1,5 @@
 import AppBar from '@material-ui/core/AppBar'
+import Badge from '@material-ui/core/Badge'
 import IconButton from '@material-ui/core/IconButton'
 import {
   createStyles,
@@ -13,9 +14,9 @@ import MenuCloseIcon from '@material-ui/icons/ArrowBack'
 import DarkIcon from '@material-ui/icons/Brightness6'
 import LightIcon from '@material-ui/icons/Brightness7'
 import MenuIcon from '@material-ui/icons/Menu'
-import { Actions, useAppShell } from '../providers/AppShellProvider'
 import { useState } from 'react'
-import Badge from '@material-ui/core/Badge'
+import { Actions, useAppShell } from 'components/providers/AppShellProvider'
+import { useAppTitle } from 'lib/utils'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,6 +41,7 @@ const useStyles = makeStyles((theme: Theme) =>
 export function AppToolbar() {
   const theme = useTheme()
   const classes = useStyles()
+  const appTitle = useAppTitle(' / ', 'Home')
 
   const { state, dispatch } = useAppShell()
 
@@ -92,7 +94,7 @@ export function AppToolbar() {
           {state.desktopDrawerIsOpen ? <MenuCloseIcon /> : <MenuIcon />}
         </IconButton>
         <Typography variant="h6" noWrap>
-          App Name
+          {appTitle}
         </Typography>
         <Tooltip
           title={
