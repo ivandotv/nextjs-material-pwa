@@ -9,13 +9,8 @@ module.exports = {
     __DEV__: true,
     __VERSION__: true
   },
-  plugins: ['@typescript-eslint/eslint-plugin', 'prettier', 'standard'],
-  extends: [
-    'prettier/standard',
-    'standard',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended'
-  ],
+  plugins: ['@typescript-eslint/eslint-plugin'],
+  extends: ['plugin:react/recommended', 'plugin:react-hooks/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     // project: './tsconfig.eslint.json',
