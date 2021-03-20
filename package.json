@@ -7,7 +7,7 @@
     "debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
-    "analyze": "env ANALYZE=true npm run build"
+    "analyze": "env ANALYZE=true yarn build"
   },
   "browserslist": [
     ">0.3%",
