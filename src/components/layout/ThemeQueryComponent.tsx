@@ -1,8 +1,8 @@
-import { useAppShell, Actions } from '../providers/AppShellProvider'
+import { useAppShell, Actions } from 'components/providers/AppShellProvider'
 import { useRef, useEffect, useLayoutEffect } from 'react'
 import { useMediaQuery } from '@material-ui/core'
 
-// https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
+//https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
 export function ThemeQueryComponent() {
   const { state, dispatch } = useAppShell()
 
@@ -22,24 +22,25 @@ export function ThemeQueryComponent() {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
 
   // monitor for system / browser changes to the theme
-  // todo - split in to two effects
+  // TODO - split in to two effects
   useLayoutEffect(() => {
     const theme = window.localStorage.getItem(storageKey)
 
     if (typeof theme === 'string') {
-      // we have explicitly set theme
+      // we have explicitly set the theme
       dispatch({
         type: Actions.SET_THEME,
         payload: theme === 'dark' ? 'dark' : 'light'
       })
     } else {
-      // system or browser set theme
+      // system theme
       dispatch({
         type: Actions.SET_THEME,
         payload: prefersDarkMode ? 'dark' : 'light'
       })
     }
-    // setShowApp(true)
+
+    // ready to show the application
     dispatch({ type: Actions.READY_TO_SHOW, payload: true })
   }, [prefersDarkMode, dispatch])
 

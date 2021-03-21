@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export const AppShellLayout = ({
+export function AppShellLayout({
   desktopSidebar,
   mobileSidebar,
   children
@@ -52,7 +52,7 @@ export const AppShellLayout = ({
   mobileSidebar?: NextApplicationPage['mobileSidebar']
   desktopSidebar?: NextApplicationPage['desktopSidebar']
   children: ReactNode
-}) => {
+}) {
   const { state } = useAppShell()
   const theme = useTheme()
   const classes = useStyles({ drawerWidth: state.desktopDrawerWidth })
