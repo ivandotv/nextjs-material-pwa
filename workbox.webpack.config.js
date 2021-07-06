@@ -44,7 +44,7 @@ function withWorkbox(nextConfig = {}) {
         return config
       }
 
-      if (dev && disable) {
+      if (disable) {
         console.log('> Progressive web app  is disabled')
 
         return config
