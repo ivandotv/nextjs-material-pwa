@@ -8,6 +8,7 @@ import {
   useTheme
 } from '@material-ui/core/styles'
 import { AppToolbar } from 'components/layout/AppToolbar'
+import { OfflineIndicator } from 'components/OfflineIndicator'
 import { useAppShell } from 'components/providers/AppShellProvider'
 import { InstallBanner } from 'components/pwa-prompt/InstallBanner'
 import { UpdateBanner } from 'components/pwa-prompt/UpdateBanner'
@@ -43,6 +44,11 @@ const useStyles = makeStyles((theme: Theme) =>
         padding: theme.spacing(2),
         paddingTop: 0
       }
+    },
+    offlineIndicator: {
+      position: 'absolute',
+      width: '100%',
+      bottom: 0
     }
   })
 )
@@ -91,12 +97,12 @@ export function AppShellLayout({
         onOk={update}
         show={showPrompt}
       />
-
       <InstallBanner
         onCancel={() => hideInstallPrompt(false)}
         onOk={installPWA}
         show={showInstallPrompt}
       />
+      <OfflineIndicator className={classes.offlineIndicator} />
       <div style={{ opacity: state.showApp ? 1 : 0 }} className={classes.root}>
         <AppToolbar />
         <nav className={classes.navWrapper}>
