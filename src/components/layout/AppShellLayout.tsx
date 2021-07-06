@@ -10,8 +10,10 @@ import {
 import { AppToolbar } from 'components/layout/AppToolbar'
 import { useAppShell } from 'components/providers/AppShellProvider'
 import { InstallBanner } from 'components/pwa-prompt/InstallBanner'
+import { UpdateBanner } from 'components/pwa-prompt/UpdateBanner'
 import { DesktopSidebar } from 'components/sidebars/DesktopSidebar'
 import { MobileSidebar } from 'components/sidebars/MobileSidebar'
+import { usePWAInstall } from 'lib/usePWAInstall'
 import { useServiceWorker } from 'lib/useServiceWorker'
 import { useDesktopDrawerPosition } from 'lib/utils'
 import Head from 'next/head'
@@ -65,6 +67,8 @@ export function AppShellLayout({
     scope: '/'
   })
 
+  const [showInstallPrompt, installPWA, hideInstallPrompt] = usePWAInstall()
+
   return (
     <>
       <Head>
@@ -82,10 +86,16 @@ export function AppShellLayout({
         ) : null}
       </Head>
       <CssBaseline />
-      <InstallBanner
+      <UpdateBanner
         onCancel={hideUpdatePrompt}
         onOk={update}
         show={showPrompt}
+      />
+
+      <InstallBanner
+        onCancel={() => hideInstallPrompt(false)}
+        onOk={installPWA}
+        show={showInstallPrompt}
       />
       <div style={{ opacity: state.showApp ? 1 : 0 }} className={classes.root}>
         <AppToolbar />

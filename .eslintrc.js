@@ -12,6 +12,7 @@ module.exports = {
     __COMMIT_SHA__: true,
     __BUILD_DATE__: true,
     ServiceWorkerGlobalScope: true,
+    BeforeInstallPromptEvent: true,
     JSX: true
   },
   plugins: ['@typescript-eslint/eslint-plugin', 'prettier'],

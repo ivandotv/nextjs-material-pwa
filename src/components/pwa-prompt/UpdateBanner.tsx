@@ -1,26 +1,23 @@
-import { useRootStore } from 'components/providers/RootStoreProvider'
-import { t } from '@lingui/macro'
-import { observer } from 'mobx-react-lite'
 import PwaNotification from './PwaNotification'
 
-const UpdateBanner = observer(function UpdateBanner() {
-  const { serviceWorker } = useRootStore()
-  // const classes = useStyles()
-
+export function UpdateBanner({
+  onCancel,
+  onOk,
+  show
+}: {
+  onCancel: () => void
+  onOk: () => void
+  show: boolean
+}) {
   return (
     <PwaNotification
-      // className={classes.notif}
-      onCancel={serviceWorker.hideUpdatePrompt}
-      onOk={serviceWorker.update}
-      show={serviceWorker.showUpdatePrompt}
-      title={t`New Version Available`}
-      okText={t`Reload`}
+      onCancel={onCancel}
+      onOk={onOk}
+      show={show}
+      title="New Version Available"
+      okText="Reload"
     >
-      <p>
-        {t`New version of the application is available. Reload to update.`}{' '}
-      </p>
+      <p>New version of the application is available. Reload to update.</p>
     </PwaNotification>
   )
-})
-
-export default UpdateBanner
+}
