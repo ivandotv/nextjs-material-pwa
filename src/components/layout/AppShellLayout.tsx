@@ -7,6 +7,7 @@ import {
   Theme,
   useTheme
 } from '@material-ui/core/styles'
+import { DisplayModeNotification } from 'components/DisplayModeNotification'
 import { AppToolbar } from 'components/layout/AppToolbar'
 import { MobileBottomNav } from 'components/MobileBottomNav'
 import { OfflineIndicator } from 'components/OfflineIndicator'
@@ -112,6 +113,7 @@ export function AppShellLayout({
         onOk={installPWA}
         show={showInstallPrompt}
       />
+      <DisplayModeNotification />
       <div style={{ opacity: state.showApp ? 1 : 0 }} className={classes.root}>
         <AppToolbar />
         <nav className={classes.navWrapper}>
