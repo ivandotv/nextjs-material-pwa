@@ -8,6 +8,7 @@ import {
   useTheme
 } from '@material-ui/core/styles'
 import { AppToolbar } from 'components/layout/AppToolbar'
+import { MobileBottomNav } from 'components/MobileBottomNav'
 import { OfflineIndicator } from 'components/OfflineIndicator'
 import { useAppShell } from 'components/providers/AppShellProvider'
 import { InstallBanner } from 'components/pwa-prompt/InstallBanner'
@@ -45,10 +46,19 @@ const useStyles = makeStyles((theme: Theme) =>
         paddingTop: 0
       }
     },
-    offlineIndicator: {
-      position: 'absolute',
+    bottomWrap: {
+      position: 'fixed',
       width: '100%',
-      bottom: 0
+      bottom: 0,
+      left: 0,
+      zIndex: 1
+    },
+    offlineIndicator: {
+      width: '100%'
+    },
+    bottomNav: {
+      borderTop: `1px solid ${theme.palette.divider}`,
+      width: '100%'
     }
   })
 )
@@ -102,7 +112,6 @@ export function AppShellLayout({
         onOk={installPWA}
         show={showInstallPrompt}
       />
-      <OfflineIndicator className={classes.offlineIndicator} />
       <div style={{ opacity: state.showApp ? 1 : 0 }} className={classes.root}>
         <AppToolbar />
         <nav className={classes.navWrapper}>
@@ -120,6 +129,14 @@ export function AppShellLayout({
             {/* https://github.com/mui-org/material-ui/issues/21711 */}
             {children as JSX.Element}
           </Container>
+          <div className={classes.bottomWrap}>
+            <OfflineIndicator className={classes.offlineIndicator} />
+            <Hidden mdUp implementation="js">
+              {state.showBottomNav ? (
+                <MobileBottomNav className={classes.bottomNav} />
+              ) : null}
+            </Hidden>
+          </div>
         </main>
       </div>
     </>

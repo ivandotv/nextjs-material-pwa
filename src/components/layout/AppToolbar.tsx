@@ -1,5 +1,6 @@
 import AppBar from '@material-ui/core/AppBar'
 import Badge from '@material-ui/core/Badge'
+import Hidden from '@material-ui/core/Hidden'
 import IconButton from '@material-ui/core/IconButton'
 import {
   createStyles,
@@ -7,6 +8,7 @@ import {
   Theme,
   useTheme
 } from '@material-ui/core/styles'
+import Switch from '@material-ui/core/Switch'
 import Toolbar from '@material-ui/core/Toolbar'
 import Tooltip from '@material-ui/core/Tooltip'
 import Typography from '@material-ui/core/Typography'
@@ -14,13 +16,21 @@ import MenuCloseIcon from '@material-ui/icons/ArrowBack'
 import DarkIcon from '@material-ui/icons/Brightness6'
 import LightIcon from '@material-ui/icons/Brightness7'
 import MenuIcon from '@material-ui/icons/Menu'
-import { useState } from 'react'
 import { Actions, useAppShell } from 'components/providers/AppShellProvider'
 import { useAppTitle } from 'lib/utils'
+import { useState } from 'react'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    switchThemeButton: {
+    sectionTitle: {
+      marginRight: 'auto'
+    },
+    switchThemeButton: {},
+    bottomNav: {
+      display: 'flex',
+      alignItems: 'center',
+      alignSelf: 'flex-end',
+      height: '50px',
       marginLeft: 'auto'
     },
     menuButtonMobile: {
@@ -34,6 +44,13 @@ const useStyles = makeStyles((theme: Theme) =>
       [theme.breakpoints.down('sm')]: {
         display: 'none'
       }
+    },
+    toolbarUiWrap: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      width: '100%',
+      height: '100%'
     }
   })
 )
@@ -58,6 +75,12 @@ export function AppToolbar() {
     })
   }
 
+  const toggleBottomNav = () => {
+    dispatch({
+      type: Actions.SHOW_BOTTOM_NAV,
+      payload: !state.showBottomNav
+    })
+  }
   const toggleTheme = () => {
     dispatch({
       type: Actions.SET_THEME,
@@ -75,46 +98,61 @@ export function AppToolbar() {
       elevation={0}
     >
       <Toolbar>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          onClick={openMobileDrawer}
-          className={classes.menuButtonMobile}
-        >
-          <MenuIcon />
-        </IconButton>
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          edge="start"
-          onClick={toggleDesktopDrawer}
-          className={classes.menuButtonDesktop}
-        >
-          {state.desktopDrawerIsOpen ? <MenuCloseIcon /> : <MenuIcon />}
-        </IconButton>
-        <Typography variant="h6" noWrap>
-          {appTitle}
-        </Typography>
-        <Tooltip
-          title={
-            state.theme === 'dark'
-              ? 'Switch to Light Theme'
-              : 'Switch to Dark Theme'
-          }
-          aria-label="toggle dark/light theme"
-        >
+        <div className={classes.toolbarUiWrap}>
           <IconButton
             color="inherit"
-            className={classes.switchThemeButton}
-            onClick={toggleTheme}
-            edge="end"
+            aria-label="open drawer"
+            edge="start"
+            onClick={openMobileDrawer}
+            className={classes.menuButtonMobile}
           >
-            <Badge badgeContent={counter} color="secondary" showZero>
-              {state.theme === 'dark' ? <LightIcon /> : <DarkIcon />}
-            </Badge>
+            <MenuIcon />
           </IconButton>
-        </Tooltip>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={toggleDesktopDrawer}
+            className={classes.menuButtonDesktop}
+          >
+            {state.desktopDrawerIsOpen ? <MenuCloseIcon /> : <MenuIcon />}
+          </IconButton>
+          <Typography variant="h6" noWrap className={classes.sectionTitle}>
+            {appTitle}
+          </Typography>
+          <Hidden mdUp implementation="js">
+            <div className={classes.bottomNav}>
+              <Switch
+                checked={state.showBottomNav}
+                onChange={toggleBottomNav}
+                name="checkedB"
+                color="secondary"
+              />
+              <Typography component="p" noWrap>
+                Bottom Nav
+              </Typography>
+            </div>
+          </Hidden>
+          <Tooltip
+            title={
+              state.theme === 'dark'
+                ? 'Switch to Light Theme'
+                : 'Switch to Dark Theme'
+            }
+            aria-label="toggle dark/light theme"
+          >
+            <IconButton
+              color="inherit"
+              className={classes.switchThemeButton}
+              onClick={toggleTheme}
+              edge="end"
+            >
+              <Badge badgeContent={counter} color="secondary" showZero>
+                {state.theme === 'dark' ? <LightIcon /> : <DarkIcon />}
+              </Badge>
+            </IconButton>
+          </Tooltip>
+        </div>
       </Toolbar>
     </AppBar>
   )

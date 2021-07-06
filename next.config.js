@@ -6,24 +6,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   workbox: {
-    // disable: process.env.NODE_ENV !== 'production',
-    disable: false,
+    disable: process.env.NODE_ENV !== 'production',
     swSrc: 'src/service-worker/sw.ts',
     swDest: 'sw.js' // inside public dir path
   }
-  // async headers() {
-  //   return [
-  //     {
-  //       source: '/:path*',
-  //       headers: [
-  //         {
-  //           key: 'Service-Worker-Allowed',
-  //           value: '/'
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // }
 }
 
 module.exports = withPlugins([withBundleAnalyzer, withWorkbox], nextConfig)
