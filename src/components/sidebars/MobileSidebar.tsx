@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme: Theme) =>
       width: '100%',
       height: '100%',
       background:
-        'linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(0,212,255,0) 100%)'
+        'linear-gradient(100deg, rgba(2,0,36,1) 0%, rgba(0,212,255,0) 100%)'
     },
     appVersion: {
       position: 'absolute',

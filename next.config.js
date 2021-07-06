@@ -1,15 +1,29 @@
+const withPlugins = require('next-compose-plugins')
+const withWorkbox = require('./workbox.webpack.config')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
 })
-const withPWA = require('next-pwa')
-const runtimeCaching = require('next-pwa/cache')
 
 const nextConfig = {
-  pwa: {
-    dest: 'public',
-    runtimeCaching,
-    disable: process.env.NODE_ENV === 'development'
+  workbox: {
+    // disable: process.env.NODE_ENV !== 'production',
+    disable: false,
+    swSrc: 'src/service-worker/sw.ts',
+    swDest: 'sw.js' // inside public dir path
   }
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/:path*',
+  //       headers: [
+  //         {
+  //           key: 'Service-Worker-Allowed',
+  //           value: '/'
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // }
 }
 
-module.exports = withBundleAnalyzer(withPWA(nextConfig))
+module.exports = withPlugins([withBundleAnalyzer, withWorkbox], nextConfig)

@@ -1,0 +1,26 @@
+body {
+  font-family: system-ui;
+  font-size: 1.25em;
+  margin: 3em 3em 0 3em;
+}
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.offline-image {
+  max-width: 500px;
+  display: block;
+  height: auto;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #fff;
+    background-color: #212121;
+  }
+}
+h1 {
+  margin-top: -14px;
+  margin-bottom: 0px;
+}

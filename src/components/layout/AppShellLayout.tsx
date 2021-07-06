@@ -7,14 +7,16 @@ import {
   Theme,
   useTheme
 } from '@material-ui/core/styles'
-import Head from 'next/head'
-import React, { ReactNode } from 'react'
-import { useDesktopDrawerPosition } from 'lib/utils'
-import { NextApplicationPage } from 'pages/_app'
+import { AppToolbar } from 'components/layout/AppToolbar'
 import { useAppShell } from 'components/providers/AppShellProvider'
+import { InstallBanner } from 'components/pwa-prompt/InstallBanner'
 import { DesktopSidebar } from 'components/sidebars/DesktopSidebar'
 import { MobileSidebar } from 'components/sidebars/MobileSidebar'
-import { AppToolbar } from 'components/layout/AppToolbar'
+import { useServiceWorker } from 'lib/useServiceWorker'
+import { useDesktopDrawerPosition } from 'lib/utils'
+import Head from 'next/head'
+import { NextApplicationPage } from 'pages/_app'
+import React, { ReactNode } from 'react'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,7 +31,6 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     contentSpacer: {
       ...theme.mixins.toolbar
-      // marginBottom: theme.spacing(5)
     },
     content: {
       width: '100%',
@@ -59,6 +60,11 @@ export function AppShellLayout({
 
   useDesktopDrawerPosition(useAppShell)
 
+  const [showPrompt, hideUpdatePrompt, update] = useServiceWorker({
+    path: '/sw.js',
+    scope: '/'
+  })
+
   return (
     <>
       <Head>
@@ -76,6 +82,11 @@ export function AppShellLayout({
         ) : null}
       </Head>
       <CssBaseline />
+      <InstallBanner
+        onCancel={hideUpdatePrompt}
+        onOk={update}
+        show={showPrompt}
+      />
       <div style={{ opacity: state.showApp ? 1 : 0 }} className={classes.root}>
         <AppToolbar />
         <nav className={classes.navWrapper}>

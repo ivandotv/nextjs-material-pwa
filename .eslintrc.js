@@ -3,26 +3,27 @@ module.exports = {
     // commonjs: true,
     es6: true,
     node: true,
-    jest: true
+    jest: true,
+    browser: true
   },
   globals: {
     __DEV__: true,
     __VERSION__: true,
     __COMMIT_SHA__: true,
-    __BUILD_DATE__: true
+    __BUILD_DATE__: true,
+    ServiceWorkerGlobalScope: true,
+    JSX: true
   },
   plugins: ['@typescript-eslint/eslint-plugin', 'prettier'],
   extends: [
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
+    // 'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'prettier',
-    'prettier/@typescript-eslint'
+    'prettier'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    // project: './tsconfig.eslint.json',
     sourceType: 'module'
   },
   settings: {
@@ -64,6 +65,7 @@ module.exports = {
         accessibility: 'no-public'
       }
     ],
+    '@typescript-eslint/explicit-module-boundary-types': ['off'],
     '@typescript-eslint/no-non-null-assertion': ['off'],
     '@typescript-eslint/member-delimiter-style': [
       'error',

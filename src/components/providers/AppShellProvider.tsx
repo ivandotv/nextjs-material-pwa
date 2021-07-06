@@ -10,6 +10,17 @@ import React, {
 import { DarkTheme, LightTheme } from 'lib/theme'
 import { ThemeQueryComponent } from 'components/layout/ThemeQueryComponent'
 
+type ActionMap<Payload> = {
+  [Action in keyof Payload]: Payload[Action] extends undefined
+    ? {
+        type: Action
+      }
+    : {
+        type: Action
+        payload: Payload[Action]
+      }
+}
+
 const Actions = {
   SET_THEME: 'SET_THEME',
   DESKTOP_DRAWER_IS_OPEN: 'DESKTOP_DRAWER_IS_OPEN',
@@ -114,17 +125,6 @@ function AppShellProvider({ children }: { children: ReactNode }) {
       </Provider>
     </ThemeProvider>
   )
-}
-
-type ActionMap<Payload> = {
-  [Action in keyof Payload]: Payload[Action] extends undefined
-    ? {
-        type: Action
-      }
-    : {
-        type: Action
-        payload: Payload[Action]
-      }
 }
 
 export { AppShellProvider, Consumer, useAppShell, Actions }

@@ -1,15 +1,13 @@
 import { NextPage } from 'next'
-import Head from 'next/head'
 import { AppProps } from 'next/app'
+import Head from 'next/head'
 import React from 'react'
 
 export type NextApplicationPage<P = {}, IP = P> = NextPage<P, IP> & {
-  desktopSidebar?: <T>(
+  desktopSidebar?: (
     defaultMenuItems: JSX.Element | JSX.Element[]
   ) => JSX.Element
-  mobileSidebar?: <T>(
-    defaultMenuItems: JSX.Element | JSX.Element[]
-  ) => JSX.Element
+  mobileSidebar?: (defaultMenuItems: JSX.Element | JSX.Element[]) => JSX.Element
   layout?: (page: NextApplicationPage, props: any) => JSX.Element
 }
 
@@ -47,6 +45,12 @@ export default function MyApp(props: AppProps) {
           type="image/png"
           sizes="32x32"
         />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+          name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent"
+        />
+        <meta name="apple-mobile-web-app-title" content="Next.js PWA APP" />
       </Head>
       {Component.layout ? (
         Component.layout(Component, pageProps)
