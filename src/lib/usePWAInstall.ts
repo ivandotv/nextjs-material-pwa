@@ -3,6 +3,9 @@ import Cookies from 'js-cookie'
 
 const pwaInstallDismissedCookie = 'pwa_install_dismissed'
 
+/**
+ * Handle installing website as a PWA
+ */
 export function usePWAInstall() {
   const beforeInstallPromptEvent = useRef<
     BeforeInstallPromptEvent | undefined

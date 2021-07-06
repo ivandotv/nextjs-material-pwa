@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { Workbox } from 'workbox-window'
 
+/**
+ * Handle registering and reloading website when service worker is updated
+ * @param {
+ *   path, - service worker path
+ *   scope - service worker scope
+ * }
+ * @returns
+ */
 export function useServiceWorker({
   path,
   scope
