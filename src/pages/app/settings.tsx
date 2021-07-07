@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
-import { AppDefaultLayout } from '../../components/layout/AppDefaultLayout'
+import { AppLayout } from '../../components/layout/AppLayout'
 import { SettingsProfile } from '../../components/SettingsProfile'
 import { MobileMenuItem } from '../../components/sidebars/MobileMenuItem'
 
@@ -53,7 +53,7 @@ function MainContent() {
   )
 }
 
-Settings.layout = AppDefaultLayout
+Settings.layout = AppLayout
 
 Settings.desktopSidebar = function SettingsMenuDesktop(
   defaultItems: ReactNode

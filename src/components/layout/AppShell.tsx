@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-export function AppShellLayout({
+export function AppShell({
   desktopSidebar,
   mobileSidebar,
   children

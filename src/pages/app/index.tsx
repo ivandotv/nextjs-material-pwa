@@ -1,4 +1,4 @@
-import { AppDefaultLayout } from '../../components/layout/AppDefaultLayout'
+import { AppLayout } from '../../components/layout/AppLayout'
 
 import { Box, Paper, Typography } from '@material-ui/core'
 
@@ -33,4 +33,4 @@ export default function AppIndex() {
   )
 }
 
-AppIndex.layout = AppDefaultLayout
+AppIndex.layout = AppLayout

@@ -1,16 +1,16 @@
 import { NextApplicationPage } from 'pages/_app'
 import { AppShellProvider } from 'components/providers/AppShellProvider'
-import { AppShellLayout } from 'components/layout/AppShellLayout'
+import { AppShell } from 'components/layout/AppShell'
 
-export function AppDefaultLayout(Component: NextApplicationPage, props: any) {
+export function AppLayout(Component: NextApplicationPage, props: any) {
   return (
     <AppShellProvider>
-      <AppShellLayout
+      <AppShell
         mobileSidebar={Component.mobileSidebar}
         desktopSidebar={Component.desktopSidebar}
       >
         <Component {...props} />
-      </AppShellLayout>
+      </AppShell>
     </AppShellProvider>
   )
 }
