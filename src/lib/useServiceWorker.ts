@@ -11,53 +11,71 @@ import { Workbox } from 'workbox-window'
  */
 export function useServiceWorker({
   path,
-  scope
+  scope,
+  enable,
+  enableReload
 }: {
   path: string
   scope: string
+  enable: boolean
+  enableReload: boolean
 }) {
   const [showUpdatePrompt, setShowUpdatePrompt] = useState(false)
   const wb = useRef<Workbox>()
+  const shouldReload = useRef(false)
 
   function hideUpdatePrompt() {
     setShowUpdatePrompt(false)
   }
 
-  // https://github.com/GoogleChrome/workbox/issues/2860
-  function swWaiting(_evt: any) {
+  /**
+   * service worker is waiting to be activated
+   * show reload prompt if enabled
+   *  */
+  function swWaiting() {
     console.log('waiting')
-    setShowUpdatePrompt(true)
+    if (enableReload) {
+      setShowUpdatePrompt(true)
+    }
   }
-
+  /**
+   * Service worker has taken the control of the page
+   * reload the window
+   */
   function swControlling(_evt: any) {
     console.log('controlling')
-    window.location.reload()
+    if (shouldReload.current) {
+      window.location.reload()
+    }
   }
 
-  // called on user click
+  /* On user click: tell the service worker to skip waiting and activate itself */
   function update() {
     wb.current!.messageSkipWaiting()
     setShowUpdatePrompt(false)
+    shouldReload.current = true
   }
 
   useEffect(() => {
     let worker: Workbox
-    if ('serviceWorker' in navigator) {
+    if (enable && 'serviceWorker' in navigator) {
       console.log('register workbox')
+
       worker = new Workbox(path, { scope })
       worker.addEventListener('waiting', swWaiting)
       worker.addEventListener('controlling', swControlling)
       worker.register()
+
       wb.current = worker
     }
 
     return () => {
       if (worker) {
         worker.removeEventListener('waiting', swWaiting)
-        worker.removeEventListener('controlling', swControlling)
+        worker.addEventListener('controlling', swControlling)
       }
     }
-  }, [path, scope])
+  }, [path, scope, enable, swWaiting])
 
   //TODO - better naming
   return [showUpdatePrompt, hideUpdatePrompt, update] as const

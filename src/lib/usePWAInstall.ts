@@ -6,7 +6,7 @@ const pwaInstallDismissedCookie = 'pwa_install_dismissed'
 /**
  * Handle installing website as a PWA
  */
-export function usePWAInstall() {
+export function usePWAInstall({ enable }: { enable: boolean }) {
   const beforeInstallPromptEvent = useRef<
     BeforeInstallPromptEvent | undefined
   >()
@@ -31,6 +31,7 @@ export function usePWAInstall() {
 
     if (!mounted.current) return
     // TODO - track outcome in analytics
+
     console.log('user choice: ', outcome)
 
     hideInstallPrompt(outcome === 'accepted' ? true : false)
@@ -49,8 +50,8 @@ export function usePWAInstall() {
   }
 
   useEffect(() => {
+    if (!enable) return
     function onAppInstalled() {
-      // hideInstallPrompt(true)
       //TODO - send to analytics
       console.log('app install')
     }

@@ -61,3 +61,11 @@ export function getPWADisplayMode() {
 
   return 'browser'
 }
+
+export function booleanEnv(env: string | undefined, initial: boolean) {
+  if (env) {
+    return env === 'true'
+  }
+
+  return initial
+}

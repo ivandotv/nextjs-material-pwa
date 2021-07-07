@@ -7,6 +7,11 @@ import {
   Theme,
   useTheme
 } from '@material-ui/core/styles'
+import {
+  enablePWAInstallBanner,
+  enableServiceWorker,
+  enableServiceWorkerReload
+} from 'browser-config'
 import { DisplayModeNotification } from 'components/DisplayModeNotification'
 import { AppToolbar } from 'components/layout/AppToolbar'
 import { MobileBottomNav } from 'components/MobileBottomNav'
@@ -81,10 +86,14 @@ export function AppShell({
 
   const [showPrompt, hideUpdatePrompt, update] = useServiceWorker({
     path: '/sw.js',
-    scope: '/'
+    scope: '/',
+    enable: enableServiceWorker,
+    enableReload: enableServiceWorkerReload
   })
 
-  const [showInstallPrompt, installPWA, hideInstallPrompt] = usePWAInstall()
+  const [showInstallPrompt, installPWA, hideInstallPrompt] = usePWAInstall({
+    enable: enablePWAInstallBanner
+  })
 
   return (
     <>
