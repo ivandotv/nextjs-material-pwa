@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import Cookies from 'js-cookie'
 
 const pwaInstallDismissedCookie = 'pwa_install_dismissed'
+// const test = 'aa'
 
 /**
  * Handle installing website as a PWA
@@ -80,7 +81,7 @@ export function usePWAInstall({ enable }: { enable: boolean }) {
       window.removeEventListener('beforeinstallprompt', onBeforeInstallPrompt)
       window.removeEventListener('appinstalled', onAppInstalled)
     }
-  }, [])
+  }, [enable])
 
   return [showInstallPrompt, installPWA, hideInstallPrompt] as const
 }

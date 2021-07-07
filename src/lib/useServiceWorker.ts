@@ -28,27 +28,6 @@ export function useServiceWorker({
     setShowUpdatePrompt(false)
   }
 
-  /**
-   * service worker is waiting to be activated
-   * show reload prompt if enabled
-   *  */
-  function swWaiting() {
-    console.log('waiting')
-    if (enableReload) {
-      setShowUpdatePrompt(true)
-    }
-  }
-  /**
-   * Service worker has taken the control of the page
-   * reload the window
-   */
-  function swControlling(_evt: any) {
-    console.log('controlling')
-    if (shouldReload.current) {
-      window.location.reload()
-    }
-  }
-
   /* On user click: tell the service worker to skip waiting and activate itself */
   function update() {
     wb.current!.messageSkipWaiting()
@@ -58,6 +37,28 @@ export function useServiceWorker({
 
   useEffect(() => {
     let worker: Workbox
+
+    /**
+     * service worker is waiting to be activated
+     * show reload prompt if enabled
+     *  */
+    function swWaiting() {
+      console.log('waiting')
+      if (enableReload) {
+        setShowUpdatePrompt(true)
+      }
+    }
+
+    /**
+     * Service worker has taken the control of the page
+     * reload the window
+     */
+    function swControlling(_evt: any) {
+      console.log('controlling')
+      if (shouldReload.current) {
+        window.location.reload()
+      }
+    }
     if (enable && 'serviceWorker' in navigator) {
       console.log('register workbox')
 
@@ -75,7 +76,7 @@ export function useServiceWorker({
         worker.addEventListener('controlling', swControlling)
       }
     }
-  }, [path, scope, enable, swWaiting])
+  }, [path, scope, enable, enableReload])
 
   //TODO - better naming
   return [showUpdatePrompt, hideUpdatePrompt, update] as const

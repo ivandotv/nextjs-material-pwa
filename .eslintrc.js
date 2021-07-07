@@ -66,6 +66,7 @@ module.exports = {
         accessibility: 'no-public'
       }
     ],
+    'react-hooks/exhaustive-deps': 'error',
     '@typescript-eslint/explicit-module-boundary-types': ['off'],
     '@typescript-eslint/no-non-null-assertion': ['off'],
     '@typescript-eslint/member-delimiter-style': [
