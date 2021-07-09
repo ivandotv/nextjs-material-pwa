@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import Head from 'next/head'
+import useStyles from 'styles/landing-page-style'
 
 export default function Index() {
+  const classes = useStyles()
+
   return (
     <>
       <Head>
@@ -10,50 +13,14 @@ export default function Index() {
           rel="stylesheet"
         ></link>
       </Head>
-      <div className="page-wrap">
+      <div className={classes.pageWrap}>
         <h1>Next.js Material PWA</h1>
-        <div className="banner-wrapper">
+        <div className={classes.bannerWrapper}>
           <img src="landing-page.svg" />
         </div>
         <Link href="/app">
-          <a className="launch-app">Launch Application</a>
+          <a className={classes.btn}>Launch Application</a>
         </Link>
-        <style jsx>
-          {`
-            .page-wrap {
-              display: flex;
-              flex-flow: column;
-              align-items: center;
-            }
-            h1 {
-              font-size: 2.5rem;
-              margin-bottom: 0;
-              text-align: center;
-            }
-            .banner-wrapper {
-              width: 100%;
-              max-width: 500px;
-            }
-            .banner-wrapper img {
-              width: 100%;
-              height: auto;
-            }
-            .launch-app {
-              background-color: blue;
-              border-radius: 10px;
-              color: #fff;
-              padding: 20px;
-              text-decoration: none;
-            }
-          `}
-        </style>
-        <style jsx global>
-          {`
-            body {
-              font-family: 'Open Sans', sans-serif;
-            }
-          `}
-        </style>
       </div>
     </>
   )
