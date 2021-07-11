@@ -7,9 +7,11 @@ const buildDate = execSync('git show -s --format=%ci HEAD')
   .toString()
   .replace(/[\r\n]+$/, '')
 
-const commitSha = execSync('git rev-parse --short HEAD')
-  .toString()
-  .replace(/[\r\n]+$/, '')
+const commitSha =
+  process.env.VERCEL_GIT_COMMIT_SHA ||
+  execSync('git rev-parse --short HEAD')
+    .toString()
+    .replace(/[\r\n]+$/, '')
 
 const plugins = [
   [
