@@ -1,10 +1,12 @@
 import { AppLayout } from '../../components/layout/AppLayout'
+import { ShellTitle } from 'components/ShellTitle'
 
 import { Box, Paper, Typography } from '@material-ui/core'
 
 export default function AppIndex() {
   return (
     <>
+      <ShellTitle title="Home" />
       <Paper>
         <Box m={2} pt={2} pb={2}>
           <Typography variant="h6">Home</Typography>

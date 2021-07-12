@@ -1,5 +1,4 @@
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Actions, useAppShell } from '../components/providers/AppShellProvider'
 
 export function useDesktopDrawerPosition(
@@ -23,31 +22,6 @@ export function useDesktopDrawerPosition(
       state.desktopDrawerIsOpen ? 'open' : 'closed'
     )
   }, [state.desktopDrawerIsOpen, key])
-}
-
-export function useAppTitle(separator: string, defaultTitle: string) {
-  const router = useRouter()
-  const [title, setTitle] = useState(defaultTitle)
-
-  useEffect(() => {
-    const path = router.pathname
-    const found = path.split('/')
-
-    if (found[2]) {
-      setTitle(
-        found[2]
-          .replace('/', separator)
-          .replace('-', ' ')
-          .split(' ')
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(' ')
-      )
-    } else {
-      setTitle(defaultTitle)
-    }
-  }, [separator, router.pathname, defaultTitle])
-
-  return title
 }
 
 export function getPWADisplayMode() {

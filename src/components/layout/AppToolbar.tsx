@@ -17,7 +17,6 @@ import DarkIcon from '@material-ui/icons/Brightness6'
 import LightIcon from '@material-ui/icons/Brightness7'
 import MenuIcon from '@material-ui/icons/Menu'
 import { Actions, useAppShell } from 'components/providers/AppShellProvider'
-import { useAppTitle } from 'lib/utils'
 import { useState } from 'react'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -58,7 +57,6 @@ const useStyles = makeStyles((theme: Theme) =>
 export function AppToolbar() {
   const theme = useTheme()
   const classes = useStyles()
-  const appTitle = useAppTitle(' / ', 'Home')
 
   const { state, dispatch } = useAppShell()
 
@@ -118,7 +116,7 @@ export function AppToolbar() {
             {state.desktopDrawerIsOpen ? <MenuCloseIcon /> : <MenuIcon />}
           </IconButton>
           <Typography variant="h6" noWrap className={classes.sectionTitle}>
-            {appTitle}
+            {state.title}
           </Typography>
           <Hidden mdUp implementation="js">
             <div className={classes.bottomNav}>

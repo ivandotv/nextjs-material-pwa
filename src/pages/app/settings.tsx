@@ -5,6 +5,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import AccountBoxIcon from '@material-ui/icons/AccountBox'
+import { ShellTitle } from 'components/ShellTitle'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
 import { AppLayout } from '../../components/layout/AppLayout'
@@ -32,24 +33,28 @@ export default function Settings() {
 
 function MainContent() {
   return (
-    <Paper>
-      <Box p={2}>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuerj sollicitudin aliquam ultrices sagittis orci a. s sense)
-        </Typography>
-      </Box>
-    </Paper>
+    <>
+      <ShellTitle title="Settings" />
+      <Paper>
+        <Box p={2}>
+          <Typography paragraph>
+            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
+            ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
+            elementum integer enim neque volutpat ac tincidunt. Ornare
+            suspendisse sed nisi lacus sed viverra tellus. Purus sit amet
+            volutpat consequat mauris. Elementum eu facilisis sed odio morbi.
+            Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt
+            ornare massa eget egestas purus viverra accumsan in. In hendrerit
+            gravida rutrum quisque non tellus orci ac. Pellentesque nec nam
+            aliquam sem et tortor. Habitant morbi tristique senectus et.
+            Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean
+            euismod elementum nisi quis eleifend. Commodo viverra maecenas
+            accumsan lacus vel facilisis. Nulla posuerj sollicitudin aliquam
+            ultrices sagittis orci a. s sense)
+          </Typography>
+        </Box>
+      </Paper>
+    </>
   )
 }
 

@@ -26,7 +26,8 @@ const Actions = {
   DESKTOP_DRAWER_IS_OPEN: 'DESKTOP_DRAWER_IS_OPEN',
   MOBILE_DRAWER_IS_OPEN: 'MOBILE_DRAWER_IS_OPEN',
   READY_TO_SHOW: 'READY_TO_SHOW',
-  SHOW_BOTTOM_NAV: 'SHOW_BOTTOM_NAV'
+  SHOW_BOTTOM_NAV: 'SHOW_BOTTOM_NAV',
+  SET_TITLE: 'SET_TITLE'
 } as const
 
 type Payload = {
@@ -35,6 +36,7 @@ type Payload = {
   [Actions.DESKTOP_DRAWER_IS_OPEN]: boolean
   [Actions.READY_TO_SHOW]: boolean
   [Actions.SHOW_BOTTOM_NAV]: boolean
+  [Actions.SET_TITLE]: string
 }
 
 const initialState = {
@@ -47,7 +49,8 @@ const initialState = {
     /iPad|iPhone|iPod/.test(navigator.userAgent),
   theme: 'light',
   showApp: false,
-  showBottomNav: false
+  showBottomNav: false,
+  title: ''
 }
 
 // todo - omit ready toshow
@@ -80,6 +83,11 @@ const reducer = (state: typeof initialState, action: ProductActions) => {
       return {
         ...state,
         showBottomNav: action.payload
+      }
+    case Actions.SET_TITLE:
+      return {
+        ...state,
+        title: action.payload
       }
     default:
       throw assertUnrecognizedAction(action)
