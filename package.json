@@ -38,7 +38,7 @@
   "devDependencies": {
     "@material-ui/codemod": "^4.5.0",
     "@next/bundle-analyzer": "^11.0.1",
-    "@types/csso": "^3.5.2",
+    "@types/csso": "^4.0.0",
     "@types/js-cookie": "^2.2.7",
     "@types/node": "^16.0.1",
     "@types/react": "^17.0.13",
