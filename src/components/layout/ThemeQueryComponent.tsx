@@ -39,9 +39,10 @@ export function ThemeQueryComponent() {
         payload: prefersDarkMode ? 'dark' : 'light'
       })
     }
-
-    // ready to show the application
-    dispatch({ type: Actions.READY_TO_SHOW, payload: true })
+    setTimeout(() => {
+      // ready to show the application
+      dispatch({ type: Actions.READY_TO_SHOW, payload: true })
+    }, 0)
   }, [prefersDarkMode, dispatch])
 
   return null
