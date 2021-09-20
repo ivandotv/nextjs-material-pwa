@@ -1,19 +1,17 @@
 import Snackbar from '@material-ui/core/Snackbar'
 import Alert from '@material-ui/lab/Alert'
-import { getPWADisplayMode } from 'lib/utils'
-import React, { useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
+import React, { useEffect } from 'react'
 
-export function DisplayModeNotification() {
+export function AppUpdatedNotification({ cookieName }: { cookieName: string }) {
   const [open, setOpen] = React.useState(false)
-  const [displayMode, setDisplayMode] = useState<string | undefined>()
 
   useEffect(() => {
-    const mode = getPWADisplayMode()
-    setTimeout(() => {
-      setDisplayMode(mode)
+    if (Cookies.get(cookieName)) {
+      Cookies.remove(cookieName)
       setOpen(true)
-    }, 2500)
-  }, [])
+    }
+  }, [cookieName])
 
   const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
@@ -24,14 +22,19 @@ export function DisplayModeNotification() {
   }
 
   return (
-    <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+    <Snackbar
+      open={open}
+      anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      autoHideDuration={5000}
+      onClose={handleClose}
+    >
       <Alert
         elevation={6}
         variant="filled"
         onClose={handleClose}
-        severity="info"
+        severity="success"
       >
-        App Display Mode: {displayMode?.toUpperCase()}
+        Application Updated!
       </Alert>
     </Snackbar>
   )

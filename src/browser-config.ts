@@ -20,3 +20,7 @@ export const enablePWAInstallBanner = booleanEnv(
   process.env.NEXT_PUBLIC_ENABLE_PWA_INSTALL,
   false
 )
+
+export const pwaInstallDismissedCookie = 'pwa_install_dissmissed'
+
+export const showAppUpdatedCookie = 'show_app_updated'

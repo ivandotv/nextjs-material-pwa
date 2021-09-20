@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Workbox } from 'workbox-window'
+import Cookies from 'js-cookie'
 
 /**
  * Handle registering and reloading website when service worker is updated
@@ -13,12 +14,14 @@ export function useServiceWorker({
   path,
   scope,
   enable,
-  enableReload
+  enableReload,
+  updateCookieName
 }: {
   path: string
   scope: string
   enable: boolean
   enableReload: boolean
+  updateCookieName: string
 }) {
   const [showUpdatePrompt, setShowUpdatePrompt] = useState(false)
   const wb = useRef<Workbox>()
@@ -43,7 +46,6 @@ export function useServiceWorker({
      * show reload prompt if enabled
      *  */
     function swWaiting() {
-      console.log('waiting')
       if (enableReload) {
         setShowUpdatePrompt(true)
       }
@@ -54,14 +56,13 @@ export function useServiceWorker({
      * reload the window
      */
     function swControlling(_evt: any) {
-      console.log('controlling')
       if (shouldReload.current) {
+        Cookies.set(updateCookieName, '1')
         window.location.reload()
       }
     }
-    if (enable && 'serviceWorker' in navigator) {
-      console.log('register workbox')
 
+    if (enable && 'serviceWorker' in navigator) {
       worker = new Workbox(path, { scope })
       worker.addEventListener('waiting', swWaiting)
       worker.addEventListener('controlling', swControlling)
@@ -76,7 +77,7 @@ export function useServiceWorker({
         worker.addEventListener('controlling', swControlling)
       }
     }
-  }, [path, scope, enable, enableReload])
+  }, [path, scope, enable, enableReload, updateCookieName])
 
   //TODO - better naming
   return [showUpdatePrompt, hideUpdatePrompt, update] as const

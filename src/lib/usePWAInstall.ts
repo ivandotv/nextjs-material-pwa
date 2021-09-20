@@ -1,13 +1,16 @@
-import { useEffect, useRef, useState } from 'react'
 import Cookies from 'js-cookie'
-
-const pwaInstallDismissedCookie = 'pwa_install_dismissed'
-// const test = 'aa'
+import { useEffect, useRef, useState } from 'react'
 
 /**
  * Handle installing website as a PWA
  */
-export function usePWAInstall({ enable }: { enable: boolean }) {
+export function usePWAInstall({
+  enable,
+  cookieName
+}: {
+  enable: boolean
+  cookieName: string
+}) {
   const beforeInstallPromptEvent = useRef<
     BeforeInstallPromptEvent | undefined
   >()
@@ -33,8 +36,6 @@ export function usePWAInstall({ enable }: { enable: boolean }) {
     if (!mounted.current) return
     // TODO - track outcome in analytics
 
-    console.log('user choice: ', outcome)
-
     hideInstallPrompt(outcome === 'accepted' ? true : false)
 
     beforeInstallPromptEvent.current = undefined
@@ -44,9 +45,9 @@ export function usePWAInstall({ enable }: { enable: boolean }) {
     setShowInstallPrompt(false)
     beforeInstallPromptEvent.current = undefined
     if (!accepted) {
-      Cookies.set(pwaInstallDismissedCookie, '1', { expires: 1 })
+      Cookies.set(cookieName, '1', { expires: 1 })
     } else {
-      Cookies.remove(pwaInstallDismissedCookie)
+      Cookies.remove(cookieName)
     }
   }
 
@@ -54,22 +55,16 @@ export function usePWAInstall({ enable }: { enable: boolean }) {
     if (!enable) return
     function onAppInstalled() {
       //TODO - send to analytics
-      console.log('app install')
     }
 
     function onBeforeInstallPrompt(e: Event) {
       e.preventDefault()
-      console.log('before install prompt')
       // Stash the event so it can be triggered later.
       beforeInstallPromptEvent.current = e as BeforeInstallPromptEvent
 
       //guard: sometimes this event fires when user clicks "cancel" in chrome ui (linux)
       if (!userChoice.current) {
-        console.log(
-          'before install cookie ',
-          Cookies.get(pwaInstallDismissedCookie)
-        )
-        if (!Cookies.get(pwaInstallDismissedCookie)) {
+        if (!Cookies.get(cookieName)) {
           setShowInstallPrompt(true)
         }
       }
@@ -81,7 +76,7 @@ export function usePWAInstall({ enable }: { enable: boolean }) {
       window.removeEventListener('beforeinstallprompt', onBeforeInstallPrompt)
       window.removeEventListener('appinstalled', onAppInstalled)
     }
-  }, [enable])
+  }, [enable, cookieName])
 
   return [showInstallPrompt, installPWA, hideInstallPrompt] as const
 }

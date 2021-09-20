@@ -120,15 +120,15 @@ export function AppToolbar() {
           </Typography>
           <Hidden mdUp implementation="js">
             <div className={classes.bottomNav}>
+              <Typography component="p" noWrap>
+                Bottom Nav
+              </Typography>
               <Switch
                 checked={state.showBottomNav}
                 onChange={toggleBottomNav}
                 name="checkedB"
                 color="secondary"
               />
-              <Typography component="p" noWrap>
-                Bottom Nav
-              </Typography>
             </div>
           </Hidden>
           <Tooltip

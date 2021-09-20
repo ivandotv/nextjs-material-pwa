@@ -10,8 +10,11 @@ import {
 import {
   enablePWAInstallBanner,
   enableServiceWorker,
-  enableServiceWorkerReload
+  enableServiceWorkerReload,
+  pwaInstallDismissedCookie,
+  showAppUpdatedCookie
 } from 'browser-config'
+import { AppUpdatedNotification } from 'components/AppUpdatedNotification'
 import { DisplayModeNotification } from 'components/DisplayModeNotification'
 import { AppToolbar } from 'components/layout/AppToolbar'
 import { MobileBottomNav } from 'components/MobileBottomNav'
@@ -88,11 +91,13 @@ export function AppShell({
     path: '/sw.js',
     scope: '/',
     enable: enableServiceWorker,
-    enableReload: enableServiceWorkerReload
+    enableReload: enableServiceWorkerReload,
+    updateCookieName: showAppUpdatedCookie
   })
 
   const [showInstallPrompt, installPWA, hideInstallPrompt] = usePWAInstall({
-    enable: enablePWAInstallBanner
+    enable: enablePWAInstallBanner,
+    cookieName: pwaInstallDismissedCookie
   })
 
   return (
@@ -123,6 +128,7 @@ export function AppShell({
         show={showInstallPrompt}
       />
       <DisplayModeNotification />
+      <AppUpdatedNotification cookieName={showAppUpdatedCookie} />
       <div style={{ opacity: state.showApp ? 1 : 0 }} className={classes.root}>
         <AppToolbar />
         <nav className={classes.navWrapper}>

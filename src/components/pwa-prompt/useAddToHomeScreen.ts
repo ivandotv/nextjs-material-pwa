@@ -29,7 +29,6 @@ export default function useAddToHomescreenPrompt(): [
     const ready = (e: IBeforeInstallPromptEvent) => {
       e.preventDefault()
       setPromptable(e)
-      console.log('allowed to install')
     }
 
     window.addEventListener('beforeinstallprompt', ready as any)
@@ -42,7 +41,6 @@ export default function useAddToHomescreenPrompt(): [
   useEffect(() => {
     const onInstall = () => {
       setIsInstalled(true)
-      console.log('app installed')
     }
 
     window.addEventListener('appinstalled', onInstall as any)
