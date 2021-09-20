@@ -10,7 +10,7 @@ export default function Index() {
       <div className={classes.pageWrap}>
         <h1>Next.js Material PWA</h1>
         <div className={classes.bannerWrapper}>
-          <Image alt="" src="landing-page.svg" />
+          <Image alt="" src="/landing-page.svg" width={400} height={300} />
         </div>
         <Link href="/app">
           <a className={classes.btn}>Launch Application</a>
