@@ -1,55 +1,16 @@
-import Box from '@material-ui/core/Box'
-import Drawer from '@material-ui/core/Drawer'
-import List from '@material-ui/core/List'
-import {
-  createStyles,
-  makeStyles,
-  Theme,
-  useTheme
-} from '@material-ui/core/styles'
-import clsx from 'clsx'
-import { memo } from 'react'
-import { NextApplicationPage } from 'pages/_app'
+import Box from '@mui/material/Box'
+import Drawer from '@mui/material/Drawer'
+import List from '@mui/material/List'
+// import { Theme } from '@mui/material/styles'
+import { useTheme } from '@mui/material/styles'
+import { styled } from '@mui/system'
 import { useAppShell } from 'components/providers/AppShellProvider'
 import { DefaultMenuItems } from 'components/sidebars/DefaultMenuItems'
+import { NextApplicationPage } from 'pages/_app'
+import { memo } from 'react'
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    drawer: {
-      [theme.breakpoints.up('md')]: {
-        width: (props: { drawerWidth: number }) => props.drawerWidth,
-        flexShrink: 0
-      }
-    },
-    drawerPaper: {
-      width: (props: { drawerWidth: number }) => props.drawerWidth
-    },
-    appBarSpacer: {
-      ...theme.mixins.toolbar
-    },
-    box: {
-      marginLeft: ({ drawerWidth }: { drawerWidth: number }) => {
-        return drawerWidth * -1
-      }
-    },
-    boxAnim: {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen
-      })
-    },
-    boxShift: {
-      height: '100vh',
-      marginLeft: 0
-    },
-    boxShiftAnim: {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen
-      })
-    }
-  })
-)
+// @ts-ignore - MUI type error
+const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
 
 export const DesktopSidebar = memo(function DesktopSidebar({
   sidebar
@@ -57,7 +18,6 @@ export const DesktopSidebar = memo(function DesktopSidebar({
   sidebar?: NextApplicationPage['desktopSidebar']
 }) {
   const { state } = useAppShell()
-  const classes = useStyles({ drawerWidth: state.desktopDrawerWidth })
   const theme = useTheme()
 
   const defaultItems = <DefaultMenuItems></DefaultMenuItems>
@@ -67,20 +27,38 @@ export const DesktopSidebar = memo(function DesktopSidebar({
     <List>{defaultItems}</List>
   )
 
+  console.log('width ', state.desktopDrawerWidth)
+
   return (
     <Box
-      className={clsx(classes.drawer, {
-        [classes.box]: !state.desktopDrawerIsOpen,
-        [classes.boxAnim]: !state.desktopDrawerIsOpen && state.showApp,
-        [classes.boxShift]: state.desktopDrawerIsOpen,
-        [classes.boxShiftAnim]: state.desktopDrawerIsOpen && state.showApp
-      })}
+      sx={{
+        width: {
+          md: state.desktopDrawerWidth
+        },
+        flexShrink: {
+          md: 0
+        },
+        ml: !state.desktopDrawerIsOpen ? state.desktopDrawerWidth * -1 : 0,
+        transition: state.showApp
+          ? !state.desktopDrawerIsOpen
+            ? (theme) =>
+                theme.transitions.create(['margin-left'], {
+                  easing: theme.transitions.easing.sharp,
+                  duration: theme.transitions.duration.leavingScreen
+                })
+            : (theme) =>
+                theme.transitions.create(['margin-left'], {
+                  easing: theme.transitions.easing.easeOut,
+                  duration: theme.transitions.duration.enteringScreen
+                })
+          : undefined,
+        height: state.desktopDrawerIsOpen ? '100vh' : undefined
+      }}
     >
       <Drawer
         anchor="left"
         variant="persistent"
         open={state.desktopDrawerIsOpen}
-        /* eslint-disable */
         transitionDuration={
           state.showApp
             ? {
@@ -90,12 +68,13 @@ export const DesktopSidebar = memo(function DesktopSidebar({
               }
             : 0
         }
-        /* eslint-enable */
-        classes={{
-          paper: classes.drawerPaper
+        sx={{
+          '.MuiDrawer-paper': {
+            width: state.desktopDrawerWidth
+          }
         }}
       >
-        <div className={classes.appBarSpacer}></div>
+        <Offset />
         {menuItems}
       </Drawer>
     </Box>

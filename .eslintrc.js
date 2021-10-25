@@ -1,6 +1,5 @@
 module.exports = {
   env: {
-    // commonjs: true,
     es6: true,
     node: true,
     jest: true,
@@ -11,17 +10,14 @@ module.exports = {
     __VERSION__: true,
     __COMMIT_SHA__: true,
     __BUILD_DATE__: true,
+    __BRANCH__: true,
+    __COMMIT_MESSAGE__: true,
     ServiceWorkerGlobalScope: true,
     BeforeInstallPromptEvent: true,
     JSX: true
   },
   plugins: ['@typescript-eslint/eslint-plugin', 'prettier'],
-  extends: [
-    'eslint:recommended',
-    // 'plugin:@typescript-eslint/recommended',
-    'next',
-    'prettier'
-  ],
+  extends: ['eslint:recommended', 'next/core-web-vitals', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module'
@@ -45,25 +41,6 @@ module.exports = {
     'padding-line-between-statements': [
       'error',
       { blankLine: 'always', prev: '*', next: 'return' }
-    ],
-    'no-restricted-imports': [
-      'error',
-      {
-        patterns: ['@material-ui/*/*/*', '!@material-ui/core/test-utils/*']
-      }
-    ],
-    // '@typescript-eslint/explicit-function-return-type': [
-    //   'error',
-    //   {
-    //     allowExpressions: true,
-    //     allowTypedFunctionExpressions: true
-    //   }
-    // ],
-    '@typescript-eslint/explicit-member-accessibility': [
-      'error',
-      {
-        accessibility: 'no-public'
-      }
     ],
     'react-hooks/exhaustive-deps': 'error',
     '@typescript-eslint/explicit-module-boundary-types': ['off'],

@@ -1,62 +1,22 @@
-import AppBar from '@material-ui/core/AppBar'
-import Badge from '@material-ui/core/Badge'
-import Hidden from '@material-ui/core/Hidden'
-import IconButton from '@material-ui/core/IconButton'
-import {
-  createStyles,
-  makeStyles,
-  Theme,
-  useTheme
-} from '@material-ui/core/styles'
-import Switch from '@material-ui/core/Switch'
-import Toolbar from '@material-ui/core/Toolbar'
-import Tooltip from '@material-ui/core/Tooltip'
-import Typography from '@material-ui/core/Typography'
-import MenuCloseIcon from '@material-ui/icons/ArrowBack'
-import DarkIcon from '@material-ui/icons/Brightness6'
-import LightIcon from '@material-ui/icons/Brightness7'
-import MenuIcon from '@material-ui/icons/Menu'
+import MenuCloseIcon from '@mui/icons-material/ArrowBack'
+import DarkIcon from '@mui/icons-material/Brightness6'
+import LightIcon from '@mui/icons-material/Brightness7'
+import MenuIcon from '@mui/icons-material/Menu'
+import AppBar from '@mui/material/AppBar'
+import Badge from '@mui/material/Badge'
+import Box from '@mui/material/Box'
+import Hidden from '@mui/material/Hidden'
+import IconButton from '@mui/material/IconButton'
+import { useTheme } from '@mui/material/styles'
+import Switch from '@mui/material/Switch'
+import Toolbar from '@mui/material/Toolbar'
+import Tooltip from '@mui/material/Tooltip'
+import Typography from '@mui/material/Typography'
 import { Actions, useAppShell } from 'components/providers/AppShellProvider'
 import { useState } from 'react'
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    sectionTitle: {
-      marginRight: 'auto'
-    },
-    switchThemeButton: {},
-    bottomNav: {
-      display: 'flex',
-      alignItems: 'center',
-      alignSelf: 'flex-end',
-      height: '50px',
-      marginLeft: 'auto'
-    },
-    menuButtonMobile: {
-      marginRight: theme.spacing(2),
-      [theme.breakpoints.up('md')]: {
-        display: 'none'
-      }
-    },
-    menuButtonDesktop: {
-      marginRight: theme.spacing(2),
-      [theme.breakpoints.down('sm')]: {
-        display: 'none'
-      }
-    },
-    toolbarUiWrap: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      width: '100%',
-      height: '100%'
-    }
-  })
-)
-
 export function AppToolbar() {
   const theme = useTheme()
-  const classes = useStyles()
 
   const { state, dispatch } = useAppShell()
 
@@ -91,18 +51,32 @@ export function AppToolbar() {
 
   return (
     <AppBar
-      color={theme.palette.type === 'light' ? 'primary' : 'default'}
+      color={theme.palette.mode === 'light' ? 'primary' : 'default'}
       position="fixed"
       elevation={0}
     >
       <Toolbar>
-        <div className={classes.toolbarUiWrap}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '100%',
+            height: '100%'
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
             onClick={openMobileDrawer}
-            className={classes.menuButtonMobile}
+            sx={{
+              mr: 2,
+              display: {
+                md: 'none'
+              }
+            }}
+            size="large"
           >
             <MenuIcon />
           </IconButton>
@@ -111,15 +85,30 @@ export function AppToolbar() {
             aria-label="open drawer"
             edge="start"
             onClick={toggleDesktopDrawer}
-            className={classes.menuButtonDesktop}
+            sx={{
+              mr: 2,
+              display: {
+                xs: 'none',
+                md: 'flex'
+              }
+            }}
+            size="large"
           >
             {state.desktopDrawerIsOpen ? <MenuCloseIcon /> : <MenuIcon />}
           </IconButton>
-          <Typography variant="h6" noWrap className={classes.sectionTitle}>
+          <Typography variant="h6" noWrap sx={{ mr: 'auto' }}>
             {state.title}
           </Typography>
           <Hidden mdUp implementation="js">
-            <div className={classes.bottomNav}>
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                alignSelf: 'flex-end',
+                height: '50px',
+                marginLeft: 'auto'
+              }}
+            >
               <Typography component="p" noWrap>
                 Bottom Nav
               </Typography>
@@ -129,7 +118,7 @@ export function AppToolbar() {
                 name="checkedB"
                 color="secondary"
               />
-            </div>
+            </Box>
           </Hidden>
           <Tooltip
             title={
@@ -141,16 +130,16 @@ export function AppToolbar() {
           >
             <IconButton
               color="inherit"
-              className={classes.switchThemeButton}
               onClick={toggleTheme}
               edge="end"
+              size="large"
             >
-              <Badge badgeContent={counter} color="secondary" showZero>
+              <Badge badgeContent={counter} color="error" showZero>
                 {state.theme === 'dark' ? <LightIcon /> : <DarkIcon />}
               </Badge>
             </IconButton>
           </Tooltip>
-        </div>
+        </Box>
       </Toolbar>
     </AppBar>
   )

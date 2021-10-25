@@ -1,8 +1,16 @@
+import { CacheProvider, EmotionCache } from '@emotion/react'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import React from 'react'
+import createEmotionCache from '../createEmotionCache'
 
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache()
+
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache
+}
 export type NextApplicationPage<P = {}, IP = P> = NextPage<P, IP> & {
   desktopSidebar?: (
     defaultMenuItems: JSX.Element | JSX.Element[]
@@ -11,14 +19,19 @@ export type NextApplicationPage<P = {}, IP = P> = NextPage<P, IP> & {
   layout?: (page: NextApplicationPage, props: any) => JSX.Element
 }
 
-export default function MyApp(props: AppProps) {
+export default function MyApp(props: MyAppProps) {
   const {
     Component,
-    pageProps
-  }: { Component: NextApplicationPage; pageProps: any } = props
+    pageProps,
+    emotionCache = clientSideEmotionCache
+  }: {
+    Component: NextApplicationPage
+    pageProps: any
+    emotionCache?: EmotionCache
+  } = props
 
   return (
-    <>
+    <CacheProvider value={emotionCache}>
       <Head>
         <link rel="manifest" href="/manifest.webmanifest" />
         <meta
@@ -57,6 +70,6 @@ export default function MyApp(props: AppProps) {
       ) : (
         <Component {...pageProps} />
       )}
-    </>
+    </CacheProvider>
   )
 }

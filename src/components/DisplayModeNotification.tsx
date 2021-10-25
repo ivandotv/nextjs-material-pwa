@@ -1,5 +1,5 @@
-import Snackbar from '@material-ui/core/Snackbar'
-import Alert from '@material-ui/lab/Alert'
+import Snackbar from '@mui/material/Snackbar'
+import Alert from '@mui/material/Alert'
 import { getPWADisplayMode } from 'lib/utils'
 import React, { useEffect, useState } from 'react'
 
@@ -24,7 +24,15 @@ export function DisplayModeNotification() {
   }
 
   return (
-    <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+    <Snackbar
+      open={open}
+      anchorOrigin={{
+        horizontal: 'center',
+        vertical: 'bottom'
+      }}
+      autoHideDuration={5000}
+      onClose={handleClose}
+    >
       <Alert
         elevation={6}
         variant="filled"

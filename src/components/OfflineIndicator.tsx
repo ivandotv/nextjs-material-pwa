@@ -1,41 +1,41 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import WarningIcon from '@material-ui/icons/Warning'
+import WarningIcon from '@mui/icons-material/Warning'
+import Box from '@mui/material/Box'
 import { useOfflineNotification } from 'lib/useOfflineNotification'
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    indicator: {
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: theme.palette.error.main,
-      color: '#fff',
-      margin: 0,
-      fontSize: '1.2rem',
-      padding: `${theme.spacing(1)}px`,
-      position: 'absolute',
-      top: '-43px'
-    },
-    text: {
-      margin: `0 ${theme.spacing(1)}px`
-    }
-  })
-)
-
-export function OfflineIndicator({ className }: { className: string }) {
+export function OfflineIndicator({ className = '' }: { className?: string }) {
   const [isOnline] = useOfflineNotification()
-  const classes = useStyles()
 
   return (
-    <div className={className}>
+    <Box className={className}>
       {!isOnline ? (
-        <p className={classes.indicator}>
+        <Box
+          sx={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            bgcolor: (theme) => theme.palette.error.main,
+            color: '#fff',
+            m: 0,
+            fontSize: '1.2rem',
+            p: 1,
+            position: 'absolute',
+            top: '-43px'
+          }}
+        >
           <WarningIcon />
-          <span className={classes.text}>It appears that you are offline</span>
+          <Box
+            component="span"
+            sx={{
+              my: 0,
+              mx: 1
+            }}
+          >
+            It appears that you are offline
+          </Box>
           <WarningIcon />
-        </p>
+        </Box>
       ) : null}
-    </div>
+    </Box>
   )
 }

@@ -1,6 +1,6 @@
 import { useAppShell, Actions } from 'components/providers/AppShellProvider'
 import { useRef, useEffect, useLayoutEffect } from 'react'
-import { useMediaQuery } from '@material-ui/core'
+import { useMediaQuery } from '@mui/material'
 
 //https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
 export function ThemeQueryComponent() {

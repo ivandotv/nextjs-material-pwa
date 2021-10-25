@@ -1,9 +1,9 @@
-import { createTheme } from '@material-ui/core/styles'
+import { createTheme } from '@mui/material/styles'
 
 // create light theme instance
 export const LightTheme = createTheme({
   palette: {
-    type: 'light',
+    mode: 'light',
     background: {
       default: ' #eaeaea'
     }
@@ -13,6 +13,13 @@ export const LightTheme = createTheme({
 // create dark theme
 export const DarkTheme = createTheme({
   palette: {
-    type: 'dark'
+    mode: 'dark'
+  },
+  components: {
+    MuiAppBar: {
+      defaultProps: {
+        enableColorOnDark: true
+      }
+    }
   }
 })

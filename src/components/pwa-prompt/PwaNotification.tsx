@@ -1,50 +1,14 @@
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import Slide from '@material-ui/core/Slide'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import Close from '@material-ui/icons/Cancel'
+import Close from '@mui/icons-material/Cancel'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import Slide from '@mui/material/Slide'
+import Typography from '@mui/material/Typography'
 import { forwardRef, ReactNode } from 'react'
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    wrapper: {
-      position: 'absolute',
-      width: '100%',
-      top: 0,
-      zIndex: 1101,
-      backgroundColor: '#2e0d66',
-      color: '#fff',
-      padding: theme.spacing(1),
-      paddingLeft: 0,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    text: {
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-      '& p': {
-        marginBottom: 0
-      }
-    },
-    closeBtn: {
-      color: '#fff'
-      //   paddingLeft: 0
-    },
-    icon: {
-      fontSize: 40
-    },
-    title: {
-      fontWeight: 'bold',
-      margin: 0,
-      fontSize: '1.0rem'
-    }
-  })
-)
 
 const PwaNotification = forwardRef<
   HTMLDivElement,
   {
-    // className: string
     onCancel: () => void
     onOk: () => void
     okText: string
@@ -56,25 +20,50 @@ const PwaNotification = forwardRef<
   { show, okText, children, onCancel, onOk, title },
   ref
 ) {
-  const classes = useStyles()
-
   return (
     <Slide direction="down" in={show} mountOnEnter unmountOnExit>
-      <div ref={ref} className={classes.wrapper}>
-        <div>
+      <Box
+        ref={ref}
+        sx={{
+          position: 'absolute',
+          width: '100%',
+          top: 0,
+          zIndex: 1101,
+          backgroundColor: '#2e0d66',
+          color: '#fff',
+          p: 1,
+          pl: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        <Box>
           <IconButton
             aria-label="close"
-            className={classes.closeBtn}
+            sx={{ color: '#fff' }}
             onClick={onCancel}
+            size="large"
           >
-            <Close className={classes.icon} />
+            <Close sx={{ fontSize: 40 }} />
           </IconButton>
-        </div>
-        <div className={classes.text}>
-          {title ? <h6 className={classes.title}>{title}</h6> : null}
+        </Box>
+        <Box sx={{ fontSize: 40 }}>
+          {title ? (
+            <Typography
+              component="h6"
+              sx={{
+                fontWeight: 'bold',
+                margin: 0,
+                fontSize: '1.0rem'
+              }}
+            >
+              {title}
+            </Typography>
+          ) : null}
           {children}
-        </div>
-        <div>
+        </Box>
+        <Box>
           <Button
             onClick={onOk}
             variant="contained"
@@ -83,8 +72,8 @@ const PwaNotification = forwardRef<
           >
             {okText}
           </Button>
-        </div>
-      </div>
+        </Box>
+      </Box>
     </Slide>
   )
 })

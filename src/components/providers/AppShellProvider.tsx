@@ -1,4 +1,6 @@
-import { ThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider } from '@mui/material/styles'
+import { ThemeQueryComponent } from 'components/layout/ThemeQueryComponent'
+import { DarkTheme, LightTheme } from 'lib/theme'
 import React, {
   createContext,
   ReactNode,
@@ -7,8 +9,6 @@ import React, {
   useReducer,
   useState
 } from 'react'
-import { DarkTheme, LightTheme } from 'lib/theme'
-import { ThemeQueryComponent } from 'components/layout/ThemeQueryComponent'
 
 type ActionMap<Payload> = {
   [Action in keyof Payload]: Payload[Action] extends undefined
@@ -125,11 +125,6 @@ function AppShellProvider({ children }: { children: ReactNode }) {
   const currentTheme = state.theme === 'dark' ? DarkTheme : LightTheme
 
   useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles) {
-      jssStyles.parentElement!.removeChild(jssStyles)
-    }
     setShowQueryTheme(true)
   }, [])
 

@@ -1,84 +1,12 @@
-import {
-  Box,
-  List,
-  Typography,
-  useMediaQuery,
-  useTheme
-} from '@material-ui/core'
-import Avatar from '@material-ui/core/Avatar'
-import Card from '@material-ui/core/Card'
-import CardMedia from '@material-ui/core/CardMedia'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import { memo, useCallback, useEffect } from 'react'
-import { NextApplicationPage } from 'pages/_app'
+import { Box, List, Typography, useMediaQuery, useTheme } from '@mui/material'
+import Avatar from '@mui/material/Avatar'
+import Card from '@mui/material/Card'
+// import { Theme } from '@mui/material/styles'
+import SwipeableDrawer from '@mui/material/SwipeableDrawer'
 import { Actions, useAppShell } from 'components/providers/AppShellProvider'
 import { DefaultMenuItems } from 'components/sidebars/DefaultMenuItems'
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    drawer: {
-      [theme.breakpoints.up('md')]: {
-        width: (props: { drawerWidth: number }) => props.drawerWidth,
-        flexShrink: 0
-      }
-    },
-    drawerPaper: {
-      width: (props: { drawerWidth: number }) => props.drawerWidth
-    },
-    card: {
-      position: 'relative',
-      height: '180px',
-      borderRadius: '0'
-    },
-    cardMedia: {
-      height: '100%',
-      width: '100%',
-      position: 'absolute',
-      top: 0,
-      left: 0
-    },
-    cardMediaGradient: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      background:
-        'linear-gradient(100deg, rgba(2,0,36,1) 0%, rgba(0,212,255,0) 100%)'
-    },
-    appVersion: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      color: '#fff',
-      marginLeft: theme.spacing(1)
-    },
-    avatarWrapper: {
-      display: 'flex',
-      position: 'relative',
-      height: '100%',
-      alignItems: 'flex-end',
-      justifyContent: 'flex-start'
-    },
-    avatarInfoWrap: {
-      marginBottom: theme.spacing(1)
-    },
-    avatar: {
-      width: theme.spacing(7),
-      height: theme.spacing(7),
-      marginLeft: theme.spacing(1),
-      marginBottom: theme.spacing(1),
-      marginRight: theme.spacing(2)
-    },
-    avatarName: {
-      color: '#ffffff'
-    },
-    avatarEmail: {
-      color: '#ffffff'
-    }
-  })
-)
+import { NextApplicationPage } from 'pages/_app'
+import { memo, useCallback, useEffect } from 'react'
 
 export const MobileSidebar = memo(function MobileSidebar({
   sidebar
@@ -87,7 +15,6 @@ export const MobileSidebar = memo(function MobileSidebar({
 }) {
   const { state, dispatch } = useAppShell()
   const theme = useTheme()
-  const classes = useStyles({ drawerWidth: state.mobileDrawerWidth })
 
   const closeDrawer = useCallback(() => {
     dispatch({ type: Actions.MOBILE_DRAWER_IS_OPEN, payload: false })
@@ -122,7 +49,12 @@ export const MobileSidebar = memo(function MobileSidebar({
   )
 
   return (
-    <Box className={classes.drawer}>
+    <Box
+      sx={{
+        width: { md: state.mobileDrawerWidth },
+        flexShrink: { md: 0 }
+      }}
+    >
       <SwipeableDrawer
         disableBackdropTransition={!state.isIOS}
         disableDiscovery={state.isIOS}
@@ -132,45 +64,69 @@ export const MobileSidebar = memo(function MobileSidebar({
         open={state.mobileDrawerIsOpen}
         onClose={closeDrawer}
         onOpen={openDrawer}
-        classes={{
-          paper: classes.drawerPaper
+        sx={{
+          '.MuiDrawer-paper': {
+            width: state.mobileDrawerWidth,
+            backgroundColor: (theme) => theme.palette.background.default,
+            backgroundImage: 'none'
+          }
         }}
         ModalProps={{
           keepMounted: true
         }}
       >
-        <Card className={classes.card}>
-          <CardMedia
-            className={classes.cardMedia}
-            image="/app/mobile-drawer-hero.png"
-            title="Album cover"
-          />
-          <div className={classes.cardMediaGradient}></div>
-
-          <Box className={classes.appVersion}>
-            <Typography component="p">App version: {__VERSION__}</Typography>
-            {__DEV__ ? (
-              <>
-                <Typography component="p">
-                  Commit sha: {__COMMIT_SHA__}
-                </Typography>
-                <Typography component="p">
-                  Build date: {__BUILD_DATE__}
-                </Typography>
-              </>
-            ) : null}
-          </Box>
-          <Box className={classes.avatarWrapper}>
-            <Avatar className={classes.avatar} src="/app/profile.jpg"></Avatar>
-            <Box className={classes.avatarInfoWrap}>
+        <Card
+          sx={{
+            position: 'relative',
+            height: '180px',
+            borderRadius: '0'
+          }}
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              background:
+                'linear-gradient(100deg, hsl(243deg 97% 46%) 0%, hsl(130deg 100% 50%) 100%)'
+            }}
+          ></Box>
+          <Box
+            sx={{
+              display: 'flex',
+              position: 'relative',
+              height: '100%',
+              alignItems: 'flex-end',
+              justifyContent: 'flex-start'
+            }}
+          >
+            <Avatar
+              sx={{
+                width: 50,
+                height: 50,
+                ml: 1,
+                mb: 1,
+                mr: 2
+              }}
+              src="/app/profile.jpg"
+            ></Avatar>
+            <Box sx={{ mb: 1 }}>
               <Typography
-                className={classes.avatarName}
+                sx={{
+                  color: '#fff'
+                }}
                 variant="h6"
                 component="p"
               >
                 Ivan Bambino
               </Typography>
-              <Typography className={classes.avatarEmail}>
+              <Typography
+                sx={{
+                  color: '#fff'
+                }}
+              >
                 hello@example.com
               </Typography>
             </Box>

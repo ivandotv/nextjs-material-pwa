@@ -7,7 +7,7 @@ import {
   CardHeader,
   Divider,
   Grid
-} from '@material-ui/core'
+} from '@mui/material'
 
 const states = [
   {

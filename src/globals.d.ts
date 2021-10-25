@@ -2,6 +2,15 @@ declare const __DEV__: boolean
 declare const __VERSION__: string
 declare const __BUILD_DATE__: string
 declare const __COMMIT_SHA__: string
+declare const __BRANCH__: string
+declare const __COMMIT_MESSAGE__: string
+
+// import { Theme } from '@mui/material/styles'
+
+// declare module '@mui/styles/defaultTheme' {
+//   // eslint-disable-next-line @typescript-eslint/no-empty-interface
+//   interface DefaultTheme extends Theme {}
+// }
 
 /**
  * The BeforeInstallPromptEvent is fired at the Window.onbeforeinstallprompt handler

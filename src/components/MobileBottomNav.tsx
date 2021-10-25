@@ -1,23 +1,9 @@
-import BottomNavigation from '@material-ui/core/BottomNavigation'
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
-import SearchIcon from '@material-ui/icons/Search'
-import SettingsIcon from '@material-ui/icons/Settings'
+import SearchIcon from '@mui/icons-material/Search'
+import SettingsIcon from '@mui/icons-material/Settings'
+import BottomNavigation from '@mui/material/BottomNavigation'
+import BottomNavigationAction from '@mui/material/BottomNavigationAction'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState } from 'react'
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      color: theme.palette.text.primary,
-      '&$selected, &$selected:hover': {
-        color: theme.palette.text.primary,
-        backgroundColor: theme.palette.action.selected
-      }
-    },
-    selected: {} // fix icon color
-  })
-)
 
 function getSelected(path: string, paths: string[]) {
   //get for first item in menuPaths
@@ -39,8 +25,7 @@ function getSelected(path: string, paths: string[]) {
   return -1
 }
 
-export function MobileBottomNav({ className }: { className: string }) {
-  const classes = useStyles()
+export function MobileBottomNav({ className = '' }: { className?: string }) {
   const router = useRouter()
   const [selected, setSelected] = useState(-1)
 
@@ -71,17 +56,33 @@ export function MobileBottomNav({ className }: { className: string }) {
     <BottomNavigation
       value={selected}
       onChange={(_event, newValue) => {
-        //navigate
         setSelected(newValue)
         router.push(menuItems[newValue].path)
       }}
       showLabels
+      sx={{
+        '&.MuiBottomNavigation-root': {
+          borderTop: (theme) => `1px solid ${theme.palette.divider}`,
+          width: '100%',
+          color: (theme) => theme.palette.text.primary
+        }
+      }}
       className={className}
     >
       {menuItems.map((item) => (
         <BottomNavigationAction
           key={item.path}
-          classes={classes}
+          sx={{
+            '&.MuiBottomNavigationAction-root': {
+              // color: (theme) => theme.palette.text.primary
+            },
+            '&:hover': {
+              bgcolor: (theme) => theme.palette.action.hover
+            },
+            '&.Mui-selected': {
+              bgcolor: (theme) => theme.palette.action.selected
+            }
+          }}
           label={item.label}
           icon={item.icon}
         />

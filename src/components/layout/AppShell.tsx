@@ -1,12 +1,9 @@
-import Container from '@material-ui/core/Container'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import Hidden from '@material-ui/core/Hidden'
-import {
-  createStyles,
-  makeStyles,
-  Theme,
-  useTheme
-} from '@material-ui/core/styles'
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import CssBaseline from '@mui/material/CssBaseline'
+import Hidden from '@mui/material/Hidden'
+import { useTheme } from '@mui/material/styles'
+import { styled } from '@mui/system'
 import {
   enablePWAInstallBanner,
   enableServiceWorker,
@@ -31,46 +28,8 @@ import Head from 'next/head'
 import { NextApplicationPage } from 'pages/_app'
 import React, { ReactNode } from 'react'
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      display: 'flex'
-    },
-    navWrapper: {
-      zIndex: theme.zIndex.appBar - 1
-    },
-    appBarSpacer: {
-      ...theme.mixins.toolbar
-    },
-    contentSpacer: {
-      ...theme.mixins.toolbar
-    },
-    content: {
-      width: '100%',
-      [theme.breakpoints.down('md')]: {
-        padding: 0
-      },
-      [theme.breakpoints.up('md')]: {
-        padding: theme.spacing(2),
-        paddingTop: 0
-      }
-    },
-    bottomWrap: {
-      position: 'fixed',
-      width: '100%',
-      bottom: 0,
-      left: 0,
-      zIndex: 1
-    },
-    offlineIndicator: {
-      width: '100%'
-    },
-    bottomNav: {
-      borderTop: `1px solid ${theme.palette.divider}`,
-      width: '100%'
-    }
-  })
-)
+// @ts-ignore - MUI type error
+const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
 
 export function AppShell({
   desktopSidebar,
@@ -83,7 +42,6 @@ export function AppShell({
 }) {
   const { state } = useAppShell()
   const theme = useTheme()
-  const classes = useStyles({ drawerWidth: state.desktopDrawerWidth })
 
   useDesktopDrawerPosition(useAppShell)
 
@@ -109,7 +67,7 @@ export function AppShell({
             name="theme-color"
             key="theme-color"
             content={
-              theme.palette.type === 'dark'
+              theme.palette.mode === 'dark'
                 ? theme.palette.grey[900]
                 : theme.palette.primary.main
             }
@@ -129,33 +87,49 @@ export function AppShell({
       />
       <DisplayModeNotification />
       <AppUpdatedNotification cookieName={showAppUpdatedCookie} />
-      <div style={{ opacity: state.showApp ? 1 : 0 }} className={classes.root}>
+      <Box style={{ opacity: state.showApp ? 1 : 0 }} sx={{ display: 'flex' }}>
         <AppToolbar />
-        <nav className={classes.navWrapper}>
+        <Box component="nav" sx={{ zIndex: theme.zIndex.appBar - 1 }}>
           <Hidden mdUp implementation="js">
             <MobileSidebar sidebar={mobileSidebar} />
           </Hidden>
-          <Hidden smDown implementation="css">
+          <Hidden mdDown implementation="css">
             <DesktopSidebar sidebar={desktopSidebar} />
           </Hidden>
-        </nav>
+        </Box>
 
-        <main className={classes.content}>
-          <div className={classes.contentSpacer} />
+        <Box
+          component="main"
+          sx={{
+            width: '100%',
+            p: {
+              md: 2
+            },
+            pt: {
+              md: 0
+            }
+          }}
+        >
+          <Offset />
           <Container maxWidth="md" disableGutters>
-            {/* https://github.com/mui-org/material-ui/issues/21711 */}
-            {children as JSX.Element}
+            {children}
           </Container>
-          <div className={classes.bottomWrap}>
-            <OfflineIndicator className={classes.offlineIndicator} />
+          <Box
+            sx={{
+              position: 'fixed',
+              width: '100%',
+              bottom: 0,
+              left: 0,
+              zIndex: 1
+            }}
+          >
+            <OfflineIndicator />
             <Hidden mdUp implementation="js">
-              {state.showBottomNav ? (
-                <MobileBottomNav className={classes.bottomNav} />
-              ) : null}
+              {state.showBottomNav ? <MobileBottomNav /> : null}
             </Hidden>
-          </div>
-        </main>
-      </div>
+          </Box>
+        </Box>
+      </Box>
     </>
   )
 }
