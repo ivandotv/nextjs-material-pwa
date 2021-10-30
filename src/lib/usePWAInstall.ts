@@ -34,7 +34,6 @@ export function usePWAInstall({
     const { outcome } = await beforeInstallPromptEvent.current.userChoice
 
     if (!mounted.current) return
-    // TODO - track outcome in analytics
 
     hideInstallPrompt(outcome === 'accepted' ? true : false)
 

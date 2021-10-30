@@ -27,8 +27,6 @@ export const DesktopSidebar = memo(function DesktopSidebar({
     <List>{defaultItems}</List>
   )
 
-  console.log('width ', state.desktopDrawerWidth)
-
   return (
     <Box
       sx={{

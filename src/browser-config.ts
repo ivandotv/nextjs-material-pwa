@@ -24,3 +24,5 @@ export const enablePWAInstallBanner = booleanEnv(
 export const pwaInstallDismissedCookie = 'pwa_install_dissmissed'
 
 export const showAppUpdatedCookie = 'show_app_updated'
+
+export const slideshowShownCookie = 'slideshow_shown'
