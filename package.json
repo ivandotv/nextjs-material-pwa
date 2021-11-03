@@ -27,6 +27,7 @@
     "@mui/lab": "^5.0.0-alpha.53",
     "@mui/material": "^5.0.6",
     "@mui/styles": "^5.0.2",
+    "@mui/system": "^5.0.6",
     "js-cookie": "^3.0.1",
     "next": "12.0.4",
     "react": "17.0.2",
@@ -38,6 +39,7 @@
     "workbox-expiration": "^6.3.0",
     "workbox-precaching": "^6.3.0",
     "workbox-recipes": "^6.3.0",
+    "workbox-routing": "^6.3.0",
     "workbox-strategies": "^6.3.0",
     "workbox-window": "^6.3.0"
   },

@@ -10,6 +10,7 @@ specifiers:
   '@mui/lab': ^5.0.0-alpha.53
   '@mui/material': ^5.0.6
   '@mui/styles': ^5.0.2
+  '@mui/system': ^5.0.6
   '@next/bundle-analyzer': ^12.0.1
   '@next/eslint-plugin-next': ^12.0.1
   '@types/csso': ^4.2.0
@@ -45,6 +46,7 @@ specifiers:
   workbox-expiration: ^6.3.0
   workbox-precaching: ^6.3.0
   workbox-recipes: ^6.3.0
+  workbox-routing: ^6.3.0
   workbox-strategies: ^6.3.0
   workbox-webpack-plugin: ^6.3.0
   workbox-window: ^6.3.0
@@ -58,6 +60,7 @@ dependencies:
   '@mui/lab': 5.0.0-alpha.53_f3378362c1ea61d6188cd3b7cb091e40
   '@mui/material': 5.0.6_548ab84a18f5953b71f8bdc6185934b5
   '@mui/styles': 5.0.2_74cdfb704b70bfbe5b519e0c4564d995
+  '@mui/system': 5.0.6_cf5898e49d1a4165414473b0b693745c
   js-cookie: 3.0.1
   next: 12.0.4_react-dom@17.0.2+react@17.0.2
   react: 17.0.2
@@ -69,6 +72,7 @@ dependencies:
   workbox-expiration: 6.3.0
   workbox-precaching: 6.3.0
   workbox-recipes: 6.3.0
+  workbox-routing: 6.3.0
   workbox-strategies: 6.3.0
   workbox-window: 6.3.0
 
