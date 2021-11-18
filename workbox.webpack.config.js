@@ -78,6 +78,7 @@ function withWorkbox(nextConfig = {}) {
         exclude: [
           /^build-manifest\.json$/i,
           /^react-loadable-manifest\.json$/i,
+          /middleware-manifest\.json$/i,
           /\/_error\.js$/i,
           /\.js\.map$/i,
           ...exclude
