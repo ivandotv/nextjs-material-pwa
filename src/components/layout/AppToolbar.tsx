@@ -1,26 +1,20 @@
 import MenuCloseIcon from '@mui/icons-material/ArrowBack'
-import DarkIcon from '@mui/icons-material/Brightness6'
-import LightIcon from '@mui/icons-material/Brightness7'
 import MenuIcon from '@mui/icons-material/Menu'
 import AppBar from '@mui/material/AppBar'
-import Badge from '@mui/material/Badge'
 import Box from '@mui/material/Box'
 import Hidden from '@mui/material/Hidden'
 import IconButton from '@mui/material/IconButton'
 import { useTheme } from '@mui/material/styles'
 import Switch from '@mui/material/Switch'
 import Toolbar from '@mui/material/Toolbar'
-import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import { Actions, useAppShell } from 'components/providers/AppShellProvider'
-import { useState } from 'react'
+import { ThemeSwitch } from 'components/ThemeSwitch'
 
 export function AppToolbar() {
   const theme = useTheme()
 
   const { state, dispatch } = useAppShell()
-
-  const [counter, setCounter] = useState(0)
 
   const openMobileDrawer = () => {
     dispatch({ type: Actions.MOBILE_DRAWER_IS_OPEN, payload: true })
@@ -43,9 +37,6 @@ export function AppToolbar() {
     dispatch({
       type: Actions.SET_THEME,
       payload: state.theme === 'dark' ? 'light' : 'dark'
-    })
-    setCounter((counter) => {
-      return counter + 1
     })
   }
 
@@ -112,6 +103,7 @@ export function AppToolbar() {
               <Typography component="p" noWrap>
                 Bottom Nav
               </Typography>
+
               <Switch
                 checked={state.showBottomNav}
                 onChange={toggleBottomNav}
@@ -120,25 +112,10 @@ export function AppToolbar() {
               />
             </Box>
           </Hidden>
-          <Tooltip
-            title={
-              state.theme === 'dark'
-                ? 'Switch to Light Theme'
-                : 'Switch to Dark Theme'
-            }
-            aria-label="toggle dark/light theme"
-          >
-            <IconButton
-              color="inherit"
-              onClick={toggleTheme}
-              edge="end"
-              size="large"
-            >
-              <Badge badgeContent={counter} color="error" showZero>
-                {state.theme === 'dark' ? <LightIcon /> : <DarkIcon />}
-              </Badge>
-            </IconButton>
-          </Tooltip>
+          <ThemeSwitch
+            checked={state.theme === 'dark'}
+            onChange={toggleTheme}
+          />
         </Box>
       </Toolbar>
     </AppBar>
