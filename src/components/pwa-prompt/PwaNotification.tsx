@@ -48,7 +48,7 @@ const PwaNotification = forwardRef<
             <Close sx={{ fontSize: 40 }} />
           </IconButton>
         </Box>
-        <Box sx={{ fontSize: 40 }}>
+        <Box>
           {title ? (
             <Typography
               component="h6"
@@ -65,6 +65,7 @@ const PwaNotification = forwardRef<
         </Box>
         <Box>
           <Button
+            sx={{ ml: 1 }}
             onClick={onOk}
             variant="contained"
             color="primary"
