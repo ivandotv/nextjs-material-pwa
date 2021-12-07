@@ -13,7 +13,7 @@ specifiers:
   '@mui/system': ^5.0.6
   '@next/bundle-analyzer': ^12.0.1
   '@next/eslint-plugin-next': ^12.0.1
-  '@types/csso': ^4.2.0
+  '@types/csso': ^5.0.0
   '@types/js-cookie': ^3.0.0
   '@types/node': ^16.11.6
   '@types/react': ^17.0.33
@@ -80,7 +80,7 @@ devDependencies:
   '@emotion/babel-plugin': 11.3.0
   '@next/bundle-analyzer': 12.0.2
   '@next/eslint-plugin-next': 12.0.2
-  '@types/csso': 4.2.0
+  '@types/csso': 5.0.0
   '@types/js-cookie': 3.0.0
   '@types/node': 16.11.6
   '@types/react': 17.0.33
@@ -2093,8 +2093,8 @@ packages:
     resolution: {integrity: sha512-zjSMDm4C7J1azi9SdT1XwNaVCzeHZx+Y5AVebcg/mrtUULNxZjeamc8oQpUDKpaudM5R+Sy7RFvm2xphfwN64w==}
     dev: true
 
-  /@types/csso/4.2.0:
-    resolution: {integrity: sha512-tGMZcJGgeIA67qbbm/ZKUi7ZyiTETEL0X4opRpFzULbIE1Kyt6EfOVSctw4N/WrEJZwmKw0J+1i/OApm6/CAOQ==}
+  /@types/csso/5.0.0:
+    resolution: {integrity: sha512-EMrCTGpXRUsbFfZBzn2jcW6Sqg8kxWXkJcpvAGYSEzFqAJ2THDJSwiMeS2fPUw+0p6RQNT/n8F/skEc9hUBc0g==}
     dependencies:
       '@types/css-tree': 1.0.6
     dev: true
