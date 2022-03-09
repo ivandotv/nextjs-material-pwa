@@ -20,7 +20,6 @@ function withWorkbox(nextConfig = {}) {
       }
 
       const {
-        dev,
         isServer,
         config: {
           workbox: {
