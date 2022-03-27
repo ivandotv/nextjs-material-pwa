@@ -1,4 +1,4 @@
-import Snackbar from '@mui/material/Snackbar'
+import Snackbar, { SnackbarCloseReason } from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
 import { getPWADisplayMode } from 'lib/utils'
 import React, { useEffect, useState } from 'react'
@@ -15,7 +15,10 @@ export function DisplayModeNotification() {
     }, 2500)
   }, [])
 
-  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+  const handleClose = (
+    _event: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason
+  ) => {
     if (reason === 'clickaway') {
       return
     }
