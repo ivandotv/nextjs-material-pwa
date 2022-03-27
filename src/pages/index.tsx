@@ -23,7 +23,8 @@ export default function Index() {
         styles={{
           body: {
             fontFamily: 'system-ui, sans-serif',
-            margin: 0
+            margin: 0,
+            color: '#4c4a4a'
           },
           '@media (prefers-color-scheme: dark)': {
             body: {
@@ -60,7 +61,6 @@ export default function Index() {
           css={{
             maxWidth: 400,
             fontSize: '0.8rem',
-            color: '#4c4a4a',
             padding: '0 12px'
           }}
         >
