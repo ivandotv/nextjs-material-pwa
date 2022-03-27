@@ -65,7 +65,6 @@ export function ThemeSwitch({
         checked={checked}
         // sx={{ m: 1 }}
         onChange={onChange}
-        defaultChecked
       />
     </Box>
   )
