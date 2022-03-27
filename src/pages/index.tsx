@@ -9,7 +9,8 @@ export default function Index() {
   const router = useRouter()
   const handleAppLaunch = (e: React.MouseEvent) => {
     if (!Cookies.get(slideshowShownCookie) || e.ctrlKey) {
-      Cookies.set(slideshowShownCookie, '1', { expires: 365 })
+      // Cookies.set(slideshowShownCookie, '1', { expires: 365 })
+      Cookies.set(slideshowShownCookie, '1')
       router.push('/onboarding')
     } else {
       router.push('/app')
