@@ -1,7 +1,7 @@
 import { Slideshow } from 'components/slideshow/Slideshow'
 import { Global } from '@emotion/react'
 
-export default function Index2() {
+export default function Onboarding() {
   return (
     <>
       <Global
