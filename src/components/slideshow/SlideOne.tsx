@@ -1,9 +1,9 @@
-import { styles } from 'components/slideshow/Slideshow'
+import { slideStyles } from 'components/slideshow/Slideshow'
 import Image from 'next/image'
 
 export function SlideOne() {
   return (
-    <div css={styles}>
+    <div css={slideStyles}>
       <div className="content">
         <Image
           priority={true}
@@ -14,7 +14,7 @@ export function SlideOne() {
         />
         <div css={{ textAlign: 'center' }}>
           <h1>Progressive Web App</h1>
-          <p>Native like experience</p>
+          <p>Hint: Swipe anywhere to switch slides</p>
         </div>
       </div>
     </div>

@@ -1,4 +1,7 @@
 import { Slideshow } from 'components/slideshow/Slideshow'
+import { SlideOne } from 'components/slideshow/SlideOne'
+import { SlideThree } from 'components/slideshow/SlideThree'
+import { SlideTwo } from 'components/slideshow/SlideTwo'
 import { Global } from '@emotion/react'
 
 export default function Onboarding() {
@@ -12,7 +15,13 @@ export default function Onboarding() {
           }
         }}
       />
-      <Slideshow />
+      <Slideshow
+        slides={[
+          <SlideOne key="1" />,
+          <SlideTwo key="2" />,
+          <SlideThree key="3" />
+        ]}
+      />
     </>
   )
 }

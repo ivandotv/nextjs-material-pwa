@@ -1,5 +1,5 @@
 import Link from 'next/link'
-export function AppBtn({ text }: { text: string }) {
+export function FinishSlideshowBtn({ text }: { text: string }) {
   return (
     <Link href="/app">
       <a

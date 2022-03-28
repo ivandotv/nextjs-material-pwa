@@ -1,19 +1,17 @@
 import { css } from '@emotion/react'
 import { Pagination } from 'components/slideshow/Pagination'
-import { SlideOne } from 'components/slideshow/SlideOne'
-import { SlideThree } from 'components/slideshow/SlideThree'
-import { SlideTwo } from 'components/slideshow/SlideTwo'
 import Head from 'next/head'
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import SwipeableViews from 'react-swipeable-views'
 import { bindKeyboard } from 'react-swipeable-views-utils'
-import { AppBtn } from './AppBtn'
+import { FinishSlideshowBtn } from 'components/slideshow/AppBtn'
 
 const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews)
 
 const backgroundColors = ['blue', 'red', 'green']
 
-export const styles = css`
+// style for every slide
+export const slideStyles = css`
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -28,9 +26,9 @@ export const styles = css`
   }
 `
 
-export function Slideshow() {
+export function Slideshow({ slides }: { slides: ReactNode[] }) {
   const [index, setIndex] = useState(0)
-  const highestIndex = 2 //no api to get this  programmatically
+  const totalSlides = slides.length
 
   return (
     <>
@@ -53,9 +51,7 @@ export function Slideshow() {
           enableMouseEvents
           onChangeIndex={(i) => setIndex(i)}
         >
-          <SlideOne />
-          <SlideTwo />
-          <SlideThree />
+          {slides}
         </BindKeyboardSwipeableViews>
         <div
           css={{
@@ -67,7 +63,9 @@ export function Slideshow() {
             flexDirection: 'column'
           }}
         >
-          <AppBtn text={index === highestIndex ? `Let's go` : 'Skip'} />
+          <FinishSlideshowBtn
+            text={index === totalSlides ? `Let's go` : 'Skip'}
+          />
           <Pagination
             dots={3}
             index={index}

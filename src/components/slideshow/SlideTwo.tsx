@@ -1,9 +1,9 @@
-import { styles } from 'components/slideshow/Slideshow'
+import { slideStyles } from 'components/slideshow/Slideshow'
 import Image from 'next/image'
 
 export function SlideTwo() {
   return (
-    <div css={styles}>
+    <div css={slideStyles}>
       <div className="content">
         <Image
           priority={true}
