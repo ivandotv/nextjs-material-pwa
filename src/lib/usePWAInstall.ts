@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import { useEffect, useRef, useState } from 'react'
+import { useDebugValue, useEffect, useRef, useState } from 'react'
 
 /**
  * Handle installing website as a PWA
@@ -17,6 +17,9 @@ export function usePWAInstall({
   const userChoice = useRef<'dismissed' | 'accepted' | undefined>()
   const [showInstallPrompt, setShowInstallPrompt] = useState(false)
   const mounted = useRef(false)
+
+  useDebugValue({ enable })
+
   useEffect(() => {
     mounted.current = true
 

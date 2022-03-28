@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useDebugValue, useEffect, useRef, useState } from 'react'
 import { Workbox } from 'workbox-window'
 import Cookies from 'js-cookie'
 
@@ -26,6 +26,8 @@ export function useServiceWorker({
   const [showUpdatePrompt, setShowUpdatePrompt] = useState(false)
   const wb = useRef<Workbox>()
   const shouldReload = useRef(false)
+
+  useDebugValue({ enable, enableReload })
 
   function hideUpdatePrompt() {
     setShowUpdatePrompt(false)

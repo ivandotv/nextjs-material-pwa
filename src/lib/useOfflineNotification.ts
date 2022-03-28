@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useDebugValue, useEffect, useState } from 'react'
 
 /**
  * Notify when the browser is offline
  */
 export function useOfflineNotification() {
   const [isOnline, setIsOnline] = useState(true)
+
+  useDebugValue({ isOnline })
+
   useEffect(() => {
     function setOnline() {
       setIsOnline(true)
