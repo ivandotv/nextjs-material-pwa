@@ -7,7 +7,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next/dist/server/config').NextConfig}*/
 const nextConfig = {
-  // reactStricMode: true,
+  reactStricMode: true,
   workbox: {
     disable: process.env.NODE_ENV !== 'production',
     swSrc: 'src/service-worker/sw.ts',
