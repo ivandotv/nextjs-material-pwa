@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Actions, useAppShell } from 'components/providers/AppShellProvider'
 
 export function useDesktopDrawerPosition(
-  context: typeof useAppShell,
+  _context: typeof useAppShell,
   key = 'desktopDrawerState'
 ) {
   const { state, dispatch } = useAppShell()

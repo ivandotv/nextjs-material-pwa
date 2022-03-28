@@ -1,4 +1,4 @@
-import { booleanEnv } from 'lib/utils'
+import { booleanEnv } from 'lib'
 
 /**
  * Note: Configuration options that should be available in

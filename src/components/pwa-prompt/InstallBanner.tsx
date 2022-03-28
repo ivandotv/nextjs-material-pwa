@@ -1,4 +1,4 @@
-import PwaNotification from 'components/pwa-prompt/PwaNotification'
+import { PWANotification } from './PwaNotification'
 import Box from '@mui/material/Box'
 
 export function InstallBanner({
@@ -12,7 +12,7 @@ export function InstallBanner({
 }) {
   return (
     <Box sx={{ backgroundColor: 'red' }}>
-      <PwaNotification
+      <PWANotification
         onCancel={onCancel}
         onOk={onOk}
         show={show}
@@ -23,7 +23,7 @@ export function InstallBanner({
           Installing Material App uses almost no storage and provides a quick
           way to launch it from the home screen.
         </p>
-      </PwaNotification>
+      </PWANotification>
     </Box>
   )
 }

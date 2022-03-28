@@ -1,4 +1,4 @@
-import PwaNotification from 'components/pwa-prompt/PwaNotification'
+import { PWANotification } from './PwaNotification'
 
 export function UpdateBanner({
   onCancel,
@@ -10,7 +10,7 @@ export function UpdateBanner({
   show: boolean
 }) {
   return (
-    <PwaNotification
+    <PWANotification
       onCancel={onCancel}
       onOk={onOk}
       show={show}
@@ -18,6 +18,6 @@ export function UpdateBanner({
       okText="Reload"
     >
       <p>New version of the application is available. Reload to update.</p>
-    </PwaNotification>
+    </PWANotification>
   )
 }

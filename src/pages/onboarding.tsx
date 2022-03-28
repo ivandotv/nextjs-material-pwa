@@ -1,7 +1,4 @@
-import { Slideshow } from 'components/slideshow/Slideshow'
-import { SlideOne } from 'components/slideshow/SlideOne'
-import { SlideThree } from 'components/slideshow/SlideThree'
-import { SlideTwo } from 'components/slideshow/SlideTwo'
+import { Slideshow, SlideOne, SlideTwo, SlideThree } from 'components/slideshow'
 import { Global } from '@emotion/react'
 
 export default function Onboarding() {

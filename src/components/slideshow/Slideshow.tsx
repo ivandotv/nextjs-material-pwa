@@ -45,7 +45,6 @@ export function Slideshow({ slides }: { slides: ReactNode[] }) {
           transition: 'background-color 1s ease-out'
         }}
       >
-        {/* @ts-ignore - typings error */}
         <BindKeyboardSwipeableViews
           index={index}
           enableMouseEvents

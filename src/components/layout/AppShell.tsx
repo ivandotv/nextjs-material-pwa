@@ -17,18 +17,15 @@ import { AppToolbar } from 'components/layout/AppToolbar'
 import { MobileBottomNav } from 'components/MobileBottomNav'
 import { OfflineIndicator } from 'components/OfflineIndicator'
 import { useAppShell } from 'components/providers/AppShellProvider'
-import { InstallBanner } from 'components/pwa-prompt/InstallBanner'
-import { UpdateBanner } from 'components/pwa-prompt/UpdateBanner'
+import { InstallBanner, UpdateBanner } from 'components/pwa-prompt'
 import { DesktopSidebar } from 'components/sidebars/DesktopSidebar'
 import { MobileSidebar } from 'components/sidebars/MobileSidebar'
-import { usePWAInstall } from 'lib/usePWAInstall'
-import { useServiceWorker } from 'lib/useServiceWorker'
-import { useDesktopDrawerPosition } from 'lib/utils'
+import { useDesktopDrawerPosition, usePWAInstall, useServiceWorker } from 'lib'
 import Head from 'next/head'
 import { NextApplicationPage } from 'pages/_app'
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 
-// @ts-ignore - MUI type error
+// @ts-expect-error - MUI type error
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
 
 export function AppShell({

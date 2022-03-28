@@ -6,7 +6,7 @@ import Slide from '@mui/material/Slide'
 import Typography from '@mui/material/Typography'
 import { forwardRef, ReactNode } from 'react'
 
-const PwaNotification = forwardRef<
+const PWANotification = forwardRef<
   HTMLDivElement,
   {
     onCancel: () => void
@@ -79,4 +79,4 @@ const PwaNotification = forwardRef<
   )
 })
 
-export default PwaNotification
+export { PWANotification }

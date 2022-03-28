@@ -1,6 +1,6 @@
 import Snackbar, { SnackbarCloseReason } from '@mui/material/Snackbar'
 import Alert from '@mui/material/Alert'
-import { getPWADisplayMode } from 'lib/utils'
+import { getPWADisplayMode } from 'lib'
 import React, { useEffect, useState } from 'react'
 
 export function DisplayModeNotification() {

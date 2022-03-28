@@ -9,7 +9,7 @@ import { DefaultMenuItems } from 'components/sidebars/DefaultMenuItems'
 import { NextApplicationPage } from 'pages/_app'
 import { memo } from 'react'
 
-// @ts-ignore - MUI type error
+// @ts-expect-error - MUI type error
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar)
 
 export const DesktopSidebar = memo(function DesktopSidebar({
