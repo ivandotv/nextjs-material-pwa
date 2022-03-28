@@ -9,7 +9,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
   reactStricMode: true,
   workbox: {
-    disable: process.env.NODE_ENV !== 'production',
+    // disable: process.env.NODE_ENV !== 'production',
+    disable: process.env.NEXT_PUBLIC_ENABLE_SERVICE_WORKER !== 'true',
     swSrc: 'src/service-worker/sw.ts',
     swDest: 'sw.js' // inside public dir path
   }
