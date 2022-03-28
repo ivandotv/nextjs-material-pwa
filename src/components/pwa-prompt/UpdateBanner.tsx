@@ -1,4 +1,4 @@
-import PwaNotification from './PwaNotification'
+import PwaNotification from 'components/pwa-prompt/PwaNotification'
 
 export function UpdateBanner({
   onCancel,

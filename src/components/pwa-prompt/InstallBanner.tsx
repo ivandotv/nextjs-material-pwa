@@ -1,4 +1,4 @@
-import PwaNotification from './PwaNotification'
+import PwaNotification from 'components/pwa-prompt/PwaNotification'
 import Box from '@mui/material/Box'
 
 export function InstallBanner({

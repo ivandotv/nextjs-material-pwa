@@ -1,4 +1,4 @@
-import { AppLayout } from '../../components/layout/AppLayout'
+import { AppLayout } from 'components/layout/AppLayout'
 import { ShellTitle } from 'components/ShellTitle'
 
 import { Box, Paper, Typography } from '@mui/material'

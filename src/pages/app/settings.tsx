@@ -8,9 +8,9 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox'
 import { ShellTitle } from 'components/ShellTitle'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
-import { AppLayout } from '../../components/layout/AppLayout'
-import { SettingsProfile } from '../../components/SettingsProfile'
-import { MobileMenuItem } from '../../components/sidebars/MobileMenuItem'
+import { AppLayout } from 'components/layout/AppLayout'
+import { SettingsProfile } from 'components/SettingsProfile'
+import { MobileMenuItem } from 'components/sidebars/MobileMenuItem'
 
 export default function Settings() {
   const router = useRouter()
