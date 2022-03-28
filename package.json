@@ -7,7 +7,7 @@
     "debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start",
-    "analyze": "env ANALYZE=true yarn build",
+    "analyze": "env ANALYZE=true pnpm build",
     "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx}\"",
     "types": "tsc",
     "prepare": "husky install"
