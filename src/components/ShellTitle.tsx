@@ -1,6 +1,6 @@
 import { Actions, useAppShell } from 'components/providers/AppShellProvider'
-import PageTitle from 'components/PageTitle'
 import { useEffect } from 'react'
+import Head from 'next/head'
 
 export function ShellTitle({ title }: { title: string }) {
   const { dispatch } = useAppShell()
@@ -12,5 +12,9 @@ export function ShellTitle({ title }: { title: string }) {
     })
   }, [dispatch, title])
 
-  return <PageTitle title={title} />
+  return title ? (
+    <Head>
+      <title key="title">{title}</title>
+    </Head>
+  ) : null
 }

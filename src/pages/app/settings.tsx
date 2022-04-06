@@ -1,16 +1,15 @@
+import AccountBoxIcon from '@mui/icons-material/AccountBox'
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
-import AccountBoxIcon from '@mui/icons-material/AccountBox'
-import { ShellTitle } from 'components/ShellTitle'
+import { SettingsProfile, ShellTitle } from 'components'
+import { AppLayout } from 'components/layout'
+import { MobileMenuItem } from 'components/sidebars'
 import { useRouter } from 'next/router'
 import { ReactNode } from 'react'
-import { AppLayout } from 'components/layout/AppLayout'
-import { SettingsProfile } from 'components/SettingsProfile'
-import { MobileMenuItem } from 'components/sidebars/MobileMenuItem'
 
 export default function Settings() {
   const router = useRouter()

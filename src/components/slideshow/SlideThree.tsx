@@ -1,4 +1,4 @@
-import { slideStyles } from 'components/slideshow/Slideshow'
+import { slideStyles } from 'components/slideshow'
 import Image from 'next/image'
 
 export function SlideThree() {

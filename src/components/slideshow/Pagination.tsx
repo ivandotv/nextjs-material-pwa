@@ -1,4 +1,4 @@
-import { PaginationDot } from 'components/slideshow/PaginationDot'
+import { PaginationDot } from 'components/slideshow'
 
 export function Pagination({
   dots,

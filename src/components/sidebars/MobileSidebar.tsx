@@ -1,10 +1,9 @@
 import { Box, List, Typography, useMediaQuery, useTheme } from '@mui/material'
 import Avatar from '@mui/material/Avatar'
 import Card from '@mui/material/Card'
-// import { Theme } from '@mui/material/styles'
 import SwipeableDrawer from '@mui/material/SwipeableDrawer'
 import { Actions, useAppShell } from 'components/providers/AppShellProvider'
-import { DefaultMenuItems } from 'components/sidebars/DefaultMenuItems'
+import { DefaultMenuItems } from 'components/sidebars'
 import { NextApplicationPage } from 'pages/_app'
 import { memo, useCallback, useEffect } from 'react'
 

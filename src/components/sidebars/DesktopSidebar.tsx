@@ -1,11 +1,10 @@
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
 import List from '@mui/material/List'
-// import { Theme } from '@mui/material/styles'
 import { useTheme } from '@mui/material/styles'
 import { styled } from '@mui/system'
 import { useAppShell } from 'components/providers/AppShellProvider'
-import { DefaultMenuItems } from 'components/sidebars/DefaultMenuItems'
+import { DefaultMenuItems } from 'components/sidebars'
 import { NextApplicationPage } from 'pages/_app'
 import { memo } from 'react'
 

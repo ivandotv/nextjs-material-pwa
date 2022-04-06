@@ -1,4 +1,4 @@
-import { AppMenuItem } from 'components/sidebars/AppMenuItem'
+import { AppMenuItem } from 'components/sidebars'
 
 export function DefaultMenuItems({
   onClick

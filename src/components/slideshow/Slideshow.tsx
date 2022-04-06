@@ -1,10 +1,10 @@
 import { css } from '@emotion/react'
-import { Pagination } from 'components/slideshow/Pagination'
+import { Pagination } from 'components/slideshow'
 import Head from 'next/head'
 import { ReactNode, useState } from 'react'
 import SwipeableViews from 'react-swipeable-views'
 import { bindKeyboard } from 'react-swipeable-views-utils'
-import { FinishSlideshowBtn } from 'components/slideshow/AppBtn'
+import { FinishSlideshowBtn } from './AppBtn'
 
 const BindKeyboardSwipeableViews = bindKeyboard(SwipeableViews)
 

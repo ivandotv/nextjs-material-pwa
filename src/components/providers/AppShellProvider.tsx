@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@mui/material/styles'
-import { ThemeQueryComponent } from 'components/layout/ThemeQueryComponent'
+import { ThemeQueryComponent } from 'components'
 import { DarkTheme, LightTheme } from 'lib/theme'
 import React, {
   createContext,

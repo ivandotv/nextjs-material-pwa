@@ -1,7 +1,6 @@
-import { AppLayout } from 'components/layout/AppLayout'
-import { ShellTitle } from 'components/ShellTitle'
-
 import { Box, Paper, Typography } from '@mui/material'
+import { ShellTitle } from 'components'
+import { AppLayout } from 'components/layout'
 
 export default function AppIndex() {
   return (
