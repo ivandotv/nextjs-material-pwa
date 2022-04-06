@@ -4,18 +4,14 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Hidden from '@mui/material/Hidden'
 import { useTheme } from '@mui/material/styles'
 import { styled } from '@mui/system'
+import { cookies, enablePWAInstallBanner, serviceWorker } from 'browser-config'
 import {
-  enablePWAInstallBanner,
-  enableServiceWorker,
-  enableServiceWorkerReload,
-  pwaInstallDismissedCookie,
-  showAppUpdatedCookie
-} from 'browser-config'
-import { AppUpdatedNotification } from 'components'
-import { DisplayModeNotification } from 'components'
+  AppUpdatedNotification,
+  DisplayModeNotification,
+  MobileBottomNav,
+  OfflineIndicator
+} from 'components'
 import { AppToolbar } from 'components/layout'
-import { MobileBottomNav } from 'components'
-import { OfflineIndicator } from 'components'
 import { useAppShell } from 'components/providers/AppShellProvider'
 import { InstallBanner, UpdateBanner } from 'components/pwa-prompt'
 import { DesktopSidebar, MobileSidebar } from 'components/sidebars'
@@ -44,14 +40,14 @@ export function AppShell({
   const [showPrompt, hideUpdatePrompt, update] = useServiceWorker({
     path: '/sw.js',
     scope: '/',
-    enable: enableServiceWorker,
-    enableReload: enableServiceWorkerReload,
-    updateCookieName: showAppUpdatedCookie
+    enable: serviceWorker.enable,
+    enableReload: serviceWorker.enableReload,
+    updateCookieName: cookies.showAppUpdated.name
   })
 
   const [showInstallPrompt, installPWA, hideInstallPrompt] = usePWAInstall({
     enable: enablePWAInstallBanner,
-    cookieName: pwaInstallDismissedCookie
+    cookieName: cookies.pwaInstallDismissed.name
   })
 
   return (
@@ -82,7 +78,7 @@ export function AppShell({
         show={showInstallPrompt}
       />
       <DisplayModeNotification />
-      <AppUpdatedNotification cookieName={showAppUpdatedCookie} />
+      <AppUpdatedNotification cookieName={cookies.showAppUpdated.name} />
       <Box style={{ opacity: state.showApp ? 1 : 0 }} sx={{ display: 'flex' }}>
         <AppToolbar />
         <Box component="nav" sx={{ zIndex: theme.zIndex.appBar - 1 }}>

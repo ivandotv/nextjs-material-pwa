@@ -6,23 +6,29 @@ import { booleanEnv } from 'lib'
  * https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables-to-the-browser
  *  */
 
-export const enableServiceWorker = booleanEnv(
-  process.env.NEXT_PUBLIC_ENABLE_SERVICE_WORKER,
-  false
-)
+export const serviceWorker = {
+  enable: booleanEnv(process.env.NEXT_PUBLIC_ENABLE_SERVICE_WORKER, false),
 
-export const enableServiceWorkerReload = booleanEnv(
-  process.env.NEXT_PUBLIC_ENABLE_SERVICE_WORKER_RELOAD,
-  false
-)
-
+  enableReload: booleanEnv(
+    process.env.NEXT_PUBLIC_ENABLE_SERVICE_WORKER_RELOAD,
+    false
+  )
+}
 export const enablePWAInstallBanner = booleanEnv(
   process.env.NEXT_PUBLIC_ENABLE_PWA_INSTALL,
   false
 )
 
-export const pwaInstallDismissedCookie = 'pwa_install_dissmissed'
+export const cookies = {
+  pwaInstallDismissed: {
+    name: 'pwa_install_dissmissed'
+  },
+  showAppUpdated: {
+    name: 'show_app_updated'
+  },
+  slideshowShown: {
+    name: 'slideshow_shown'
+  }
+}
 
-export const showAppUpdatedCookie = 'show_app_updated'
-
-export const slideshowShownCookie = 'slideshow_shown'
+export const themeStorageKey = 'theme'
