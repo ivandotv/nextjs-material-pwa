@@ -4,7 +4,11 @@ import CssBaseline from '@mui/material/CssBaseline'
 import Hidden from '@mui/material/Hidden'
 import { useTheme } from '@mui/material/styles'
 import { styled } from '@mui/system'
-import { cookies, enablePWAInstallBanner, serviceWorker } from 'browser-config'
+import {
+  cookies,
+  enablePWAInstallBanner,
+  serviceWorker
+} from 'lib/shared/config'
 import {
   AppUpdatedNotification,
   DisplayModeNotification,
@@ -15,7 +19,11 @@ import { AppToolbar } from 'components/layout'
 import { useAppShell } from 'components/providers/AppShellProvider'
 import { InstallBanner, UpdateBanner } from 'components/pwa-prompt'
 import { DesktopSidebar, MobileSidebar } from 'components/sidebars'
-import { useDesktopDrawerPosition, usePWAInstall, useServiceWorker } from 'lib'
+import {
+  useDesktopDrawerPosition,
+  usePWAInstall,
+  useServiceWorker
+} from 'lib/client/hooks'
 import Head from 'next/head'
 import { NextApplicationPage } from 'pages/_app'
 import { ReactNode } from 'react'

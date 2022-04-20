@@ -1,5 +1,5 @@
 import { CacheProvider, EmotionCache } from '@emotion/react'
-import createEmotionCache from 'createEmotionCache'
+import createEmotionCache from 'lib/server/createEmotionCache'
 import { NextPage } from 'next'
 import { AppProps } from 'next/app'
 import Head from 'next/head'

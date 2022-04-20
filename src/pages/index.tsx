@@ -1,5 +1,5 @@
 import { Global } from '@emotion/react'
-import { cookies } from 'browser-config'
+import { cookies } from 'lib/shared/config'
 import Cookies from 'js-cookie'
 import Image from 'next/image'
 import { useRouter } from 'next/router'

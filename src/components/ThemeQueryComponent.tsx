@@ -1,7 +1,7 @@
 import { useAppShell, Actions } from 'components/providers/AppShellProvider'
 import { useRef, useEffect, useLayoutEffect } from 'react'
 import { useMediaQuery } from '@mui/material'
-import { themeStorageKey } from 'browser-config'
+import { themeStorageKey } from 'lib/shared/config'
 
 //https://gist.github.com/gaearon/e7d97cdf38a2907924ea12e4ebdf3c85
 export function ThemeQueryComponent() {

@@ -1,6 +1,6 @@
 import { ThemeProvider } from '@mui/material/styles'
 import { ThemeQueryComponent } from 'components'
-import { DarkTheme, LightTheme } from 'lib/theme'
+import { DarkTheme, LightTheme } from 'lib/client/theme'
 import React, {
   createContext,
   ReactNode,

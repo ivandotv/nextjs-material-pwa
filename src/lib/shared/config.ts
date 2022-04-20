@@ -1,20 +1,20 @@
-import { booleanEnv } from 'lib'
+import { toBoolean } from 'lib/shared/utils'
 
 /**
- * Note: Configuration options that should be available in
+ * Note: Configuration options that can be used both on the client and on the server
  * the browser.
  * https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables-to-the-browser
  *  */
 
 export const serviceWorker = {
-  enable: booleanEnv(process.env.NEXT_PUBLIC_ENABLE_SERVICE_WORKER, false),
+  enable: toBoolean(process.env.NEXT_PUBLIC_ENABLE_SERVICE_WORKER, false),
 
-  enableReload: booleanEnv(
+  enableReload: toBoolean(
     process.env.NEXT_PUBLIC_ENABLE_SERVICE_WORKER_RELOAD,
     false
   )
 }
-export const enablePWAInstallBanner = booleanEnv(
+export const enablePWAInstallBanner = toBoolean(
   process.env.NEXT_PUBLIC_ENABLE_PWA_INSTALL,
   false
 )

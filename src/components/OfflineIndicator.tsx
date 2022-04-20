@@ -1,6 +1,6 @@
 import WarningIcon from '@mui/icons-material/Warning'
 import Box from '@mui/material/Box'
-import { useOfflineNotification } from 'lib'
+import { useOfflineNotification } from 'lib/client/hooks'
 
 export function OfflineIndicator({ className = '' }: { className?: string }) {
   const [isOnline] = useOfflineNotification()
