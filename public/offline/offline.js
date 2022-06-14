@@ -13,7 +13,10 @@ async function checkNetwork() {
       window.clearInterval(checkNetworkInterval)
       window.location.reload()
     }
-  } catch {}
+    // eslint-disable-next-line no-empty
+  } catch (e) {
+    //ignore erro
+  }
 }
 
 const checkNetworkInterval = window.setInterval(checkNetwork, 2000)
