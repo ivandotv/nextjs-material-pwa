@@ -4,19 +4,10 @@ import BottomNavigation from '@mui/material/BottomNavigation'
 import BottomNavigationAction from '@mui/material/BottomNavigationAction'
 import { useRouter } from 'next/router'
 import { useEffect, useMemo, useState } from 'react'
+import PlayCircleIcon from '@mui/icons-material/PlayCircle'
 
 function getSelected(path: string, paths: string[]) {
-  //get for first item in menuPaths
-  if (
-    path === '/app' ||
-    path.startsWith('/app/by-') ||
-    path.startsWith('/app/custom')
-  ) {
-    return 0
-  }
-
-  //skip first item
-  for (let i = 1; i < paths.length; i++) {
+  for (let i = 0; i < paths.length; i++) {
     if (path.startsWith(paths[i])) {
       return i
     }
@@ -36,7 +27,8 @@ export function MobileBottomNav({ className = '' }: { className?: string }) {
         icon: <SearchIcon />,
         path: '/app'
       },
-      { label: `Settings`, icon: <SettingsIcon />, path: '/app/settings' }
+      { label: `Settings`, icon: <SettingsIcon />, path: '/app/settings' },
+      { label: `Oboarding`, icon: <PlayCircleIcon />, path: '/onboarding' }
     ],
     []
   )
