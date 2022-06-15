@@ -14,8 +14,13 @@ import {
 import { registerRoute } from 'workbox-routing'
 import { NetworkFirst, StaleWhileRevalidate } from 'workbox-strategies'
 
+// export {}
+
 declare const self: ServiceWorkerGlobalScope
-export {}
+
+//optionally disable debug logging
+// @ts-expect-error - type missing
+self.__WB_DISABLE_DEV_LOGS = false
 
 cleanupOutdatedCaches()
 
