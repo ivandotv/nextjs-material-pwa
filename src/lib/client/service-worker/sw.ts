@@ -22,6 +22,10 @@ declare const self: ServiceWorkerGlobalScope
 // @ts-expect-error - type missing
 self.__WB_DISABLE_DEV_LOGS = false
 
+//optionally disable debug logging
+// @ts-expect-error - type missing
+self.__WB_DISABLE_DEV_LOGS = false
+
 cleanupOutdatedCaches()
 
 precacheAndRoute(self.__WB_MANIFEST)

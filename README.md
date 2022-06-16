@@ -4,6 +4,25 @@ Template for creating progressive web apps with [MaterialUI](https://mui.com/), 
 
 Working demo: https://material-pwa.vercel.app/
 
+<!-- toc -->
+
+- [Motivation](#motivation)
+- [Layout](#layout)
+- [Theming](#theming)
+- [Onboarding slideshow](#onboarding-slideshow)
+- [Pwa](#pwa)
+  - [service worker setup](#service-worker-setup)
+  - [Offline fallback](#offline-fallback)
+  - [Installation prompt](#installation-prompt)
+  - [App shortcuts](#app-shortcuts)
+- [Custom Babel.js config](#custom-babeljs-config)
+- [Future](#future)
+- [Blog post](#blog-post)
+- [Useful links](#useful-links)
+- [License](#license)
+
+<!-- tocstop -->
+
 ## Motivation
 
 Setting up PWA's involves a lot of moving parts, so I've decided to create a template repository, that I would always keep up to date, and it will enable me to get started quickly.
@@ -29,7 +48,7 @@ Mobile layout has two options.
 
 ## Onboarding slideshow
 
-I've also included an Onboarding slideshow which is usually present in native apps. This is optional ind it can easily be removed.
+I've also included an onboarding slideshow which is usually present in native apps. This is optional and it can easily be removed.
 
 //TODO - image
 
@@ -42,24 +61,34 @@ Service worker functionality is implemented with the excelent [Workbox library](
 
 - Service worker [`sw.js`](./src/lib/client/service-worker/sw.ts) is written in Typescript and it will be compiled togheter with the rest of the code. Workbox in combination with Next.js needs special setup [`workbox.webpack.config.js`](./workbox.webpack.config.js). Service worker will precache all the routes, images, css and google fonts. Every time the app is built new cachec manifest is created.
 
+When the service worker is installed, the application will show a prompt to reolad the applactions so the new service worker can take over.
+
+### Offline fallback
+
 Offline fallbacke is provided, if `navigation` happens when there is no networker, fallback page will be shown. Please note that the fallabkac files must be pure html,css, and js (no react, or css-in-js libraries). Fallback files need to be placed in the `public` directory.
 
-When the service worker is installed, the application will show a prompt to reolad the applactions so the new service worker can take over.
+Also ther is `network offline` detection, if the browser looses network connection, ther will be a notificationn inside te app that the appliction is offline. You can test this via Chrome dev tools network tab.
+
+### Installation prompt
 
 Application also has a custom prompt for the installation of the app. Please note that installation prompt only works on the deskopt OS'es and Android, no IOS.
 
+### App shortcuts
+
 Applicaton also has set some demo shoctus whicch show up if the application is installed. You can read more about PWA Shortcuts at [Get things done quickly with app shortcuts](https://web.dev/app-shortcuts/)
+
+![pwa shortcuts](./doc-assets/shortcuts.gif)
 
 ## Custom Babel.js config
 
 There is a custom babel configuration, that enables you to have a couple of custom `env` var that can be used when compiling the application:
 
-`__VERSION__`: app version, taken from `package.json` version,
-`__DEV__`: true if application is runnin in dev mod
-`__BUILD_DATE__`: app build date taken from the git commit
-`__COMMIT_SHA__`: git commit sha
-`__BRANCH__`: branch name,
-`__COMMIT_MESSAGE__`: git commit message
+- `__VERSION__`: app version, taken from `package.json` version,
+- `__DEV__`: true if application is runnin in dev mod
+- `__BUILD_DATE__`: app build date taken from the git commit
+- `__COMMIT_SHA__`: git commit sha
+- `__BRANCH__`: branch name,
+- `__COMMIT_MESSAGE__`: git commit message
 
 If you don't need these `env` variables, you can remove babel config and use [Next.js compiler](https://nextjs.org/docs/advanced-features/compiler) which will increase compilation speed.
 
@@ -76,7 +105,7 @@ to be notified of new blog posts.
 
 ## Useful links
 
-If you want to learn more about create progressive web apps with great user experience make you go through these links:
+If you want to learn more about how create progressive web apps with great user experience, check out hese links:
 
 - dfad
 - adf
