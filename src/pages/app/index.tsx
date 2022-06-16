@@ -23,7 +23,7 @@ export default function AppIndex() {
             </Typography>
             <Typography component="p">
               Repository: {''}
-              <a href="https://github.com/ivandotv/nextjs-material-pwa/upload/master/public">
+              <a href="https://github.com/ivandotv/nextjs-material-pwa">
                 https://github.com/ivandotv/nextjs-material-pwa
               </a>
             </Typography>
