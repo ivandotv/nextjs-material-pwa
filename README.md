@@ -54,20 +54,20 @@ I've also included an onboarding slideshow which is usually present in native ap
 
 https://user-images.githubusercontent.com/390700/174054384-3eeb975b-c39a-414a-a93c-48f6fbfefd7b.mp4
 
-## PWA
+## Service worker
 
 The real hard part of creating pwa's is service worker integration, both in the build process and in production.
 Service worker functionality is implemented with the excellent [Workbox library](https://developer.chrome.com/docs/workbox/)
 
 ### service worker setup
 
-- Service worker [`sw.js`](./src/lib/client/service-worker/sw.ts) is written in Typescript and it will be compiled together with the rest of the code. Workbox in combination with Next.js needs a special setup [`workbox.webpack.config.js`](./workbox.webpack.config.js). The service worker will precache all the routes, images, CSS, and google fonts. Every time the app is built new cache manifest is created.
+- Service worker [`sw.js`](./src/lib/client/service-worker/sw.ts) is written in Typescript and it will be compiled together with the rest of the code. The service worker will precache all the routes, images, CSS, and google fonts. Every time the app is built new cache manifest is created.
 
-When the service worker is installed, the application will show a prompt to reload the applications so the new service worker can take over.
+When the service worker is installed, the application will show a prompt to reload the application so the new service worker can take over.
 
 ### offline fallback
 
-Offline fallback is provided, if `navigation` happens when there is no networker, the fallback page will be shown. Please note that the fallback files must be pure html,css, and js (no react, or css-in-js libraries). Fallback files need to be placed in the `public` directory.
+Offline fallback is provided, if `navigation` happens when there is no network access, the fallback page will be shown. Please note that the fallback files must be pure html,css, and js (no react, or css-in-js libraries). Fallback files need to be placed in the `public` directory.
 
 Also, there is `network offline` detection, if the browser loses network connection, there will be a notification inside the app that the application is offline. You can test this via the Chrome dev tools network tab.
 
@@ -86,7 +86,7 @@ The application also has set some demo shortcuts which show up if the applicatio
 There is a custom babel configuration, that enables you to have a couple of custom `env` var that can be used when compiling the application:
 
 - `__VERSION__`: app version, taken from `package.json` version,
-- `__DEV__`: true if the application is running in dev mod
+- `__DEV__`: `true` if the application is running in dev mode
 - `__BUILD_DATE__`: app build date taken from the git commit
 - `__COMMIT_SHA__`: git commit sha
 - `__BRANCH__`: branch name,
