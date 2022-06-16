@@ -42,7 +42,7 @@ export default function MyApp(props: MyAppProps) {
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta
           name="description"
-          content="Next.js PWA application made with metrial-ui"
+          content="Next.js PWA application made with material-ui"
           key="description"
         />
         <meta
