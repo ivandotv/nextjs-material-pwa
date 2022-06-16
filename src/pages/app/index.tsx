@@ -21,6 +21,12 @@ export default function AppIndex() {
             <Typography component="p">
               Commit Message: {__COMMIT_MESSAGE__}
             </Typography>
+            <Typography component="p">
+              Repository: {''}
+              <a href="https://github.com/ivandotv/nextjs-material-pwa/upload/master/public">
+                https://github.com/ivandotv/nextjs-material-pwa
+              </a>
+            </Typography>
           </>
         </Box>
       </Paper>
