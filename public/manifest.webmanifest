@@ -2,30 +2,13 @@
   "theme_color": "#4a90e2",
   "background_color": "#4a90e2",
   "display": "standalone",
+  "id": "material-pwa.vercel.app",
   "start_url": "/app",
   "name": "Next.js PWA",
   "short_name": "Next.js PWA",
-  "description": "Next.js PWA with Material Design",
+  "description": "Next.js PWA with Material Design demo",
   "orientation": "any",
   "icons": [
-    {
-      "src": "app/pwa-icons/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "app/pwa-icons/icon-256x256.png",
-      "sizes": "256x256",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "app/pwa-icons/icon-384x384.png",
-      "sizes": "384x384",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
     {
       "src": "app/pwa-icons/icon-512x512.png",
       "sizes": "512x512",
@@ -66,6 +49,23 @@
       "icons": [
         { "src": "app/shortcuts/profile-shortcut.png", "sizes": "192x192" }
       ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "app/promotion/screen-1.png",
+      "sizes": "1080x2280",
+      "type": "image/png"
+    },
+    {
+      "src": "app/promotion/screen-2.png",
+      "sizes": "1080x2280",
+      "type": "image/png"
+    },
+    {
+      "src": "app/promotion/screen-3.png",
+      "sizes": "1080x2280",
+      "type": "image/png"
     }
   ]
 }

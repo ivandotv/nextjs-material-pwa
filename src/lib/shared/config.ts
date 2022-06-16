@@ -2,7 +2,6 @@ import { toBoolean } from 'lib/shared/utils'
 
 /**
  * Note: Configuration options that can be used both on the client and on the server
- * the browser.
  * https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables-to-the-browser
  *  */
 
