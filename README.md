@@ -113,6 +113,8 @@ If you want to learn more about how to create progressive web apps with a great 
 - [30 days of PWA](https://blogs.windows.com/msedgedev/2022/04/14/30-days-of-pwa-fall-in-love-with-progressive-web-apps/)
 - [service worker lifecycle](https://web.dev/service-worker-lifecycle/)
 - [pwa icon generator](https://maskable.app/)
+- [responsively application](https://responsively.app/)
+- [samsung remote test lab](https://developer.samsung.com/remote-test-lab)
 
 ## License
 
