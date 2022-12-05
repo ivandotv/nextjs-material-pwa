@@ -30,7 +30,7 @@ export function AppMenuItem({
   }
 
   return (
-    <Link {...link} passHref>
+    <Link {...link} passHref legacyBehavior>
       <ListItem
         button
         component="a"
