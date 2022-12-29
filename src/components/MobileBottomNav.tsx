@@ -28,7 +28,7 @@ export function MobileBottomNav({ className = '' }: { className?: string }) {
         path: '/app'
       },
       { label: `Settings`, icon: <SettingsIcon />, path: '/app/settings' },
-      { label: `Oboarding`, icon: <PlayCircleIcon />, path: '/onboarding' }
+      { label: `Onboarding`, icon: <PlayCircleIcon />, path: '/onboarding' }
     ],
     []
   )
