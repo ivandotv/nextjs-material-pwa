@@ -11,7 +11,7 @@ const bundleAnalyzer = withBundleAnalyzer({
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  reactStricMode: true,
+  reactStrictMode: true,
   workbox: {
     // enable: process.env.NODE_ENV !== 'production',
     enable: process.env.NEXT_PUBLIC_ENABLE_SERVICE_WORKER === 'true',
